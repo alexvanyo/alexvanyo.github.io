@@ -34,7 +34,6 @@ fun main() {
         LaunchedEffect(Unit) {
             val articlesJson = window.fetch("data/articles.json").await().text().await()
             articles = websiteJson.decodeFromString(ListSerializer(Article.serializer()), articlesJson)
-            console.log(articles)
         }
 
         Style(object : StyleSheet() {
