@@ -1,10 +1,6 @@
 package com.alexvanyo.website.pages
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.web.css.AlignItems
 import androidx.compose.web.css.DisplayStyle
 import androidx.compose.web.css.FlexDirection
@@ -13,7 +9,6 @@ import androidx.compose.web.css.JustifyContent
 import androidx.compose.web.css.LineStyle
 import androidx.compose.web.css.StylePropertyValue
 import androidx.compose.web.css.alignItems
-import androidx.compose.web.css.auto
 import androidx.compose.web.css.backgroundColor
 import androidx.compose.web.css.border
 import androidx.compose.web.css.borderRadius
@@ -24,8 +19,6 @@ import androidx.compose.web.css.flexGrow
 import androidx.compose.web.css.flexWrap
 import androidx.compose.web.css.height
 import androidx.compose.web.css.justifyContent
-import androidx.compose.web.css.margin
-import androidx.compose.web.css.marginLeft
 import androidx.compose.web.css.marginTop
 import androidx.compose.web.css.padding
 import androidx.compose.web.css.percent
@@ -35,7 +28,6 @@ import androidx.compose.web.css.value
 import androidx.compose.web.css.vh
 import androidx.compose.web.css.width
 import androidx.compose.web.elements.A
-import androidx.compose.web.elements.Button
 import androidx.compose.web.elements.Div
 import androidx.compose.web.elements.Footer
 import androidx.compose.web.elements.H1
@@ -46,12 +38,15 @@ import androidx.compose.web.elements.Section
 import androidx.compose.web.elements.Text
 import com.alexvanyo.website.data.Platform
 import com.alexvanyo.website.data.platforms
+import com.alexvanyo.website.models.Article
 import com.alexvanyo.website.styles.Colors
 import com.alexvanyo.website.styles.TextAlign
 import com.alexvanyo.website.styles.textAlign
 
 @Composable
-fun IndexPage() {
+fun IndexPage(
+    articles: List<Article>
+) {
     Div(style = {
         display(DisplayStyle.Flex)
         flexDirection(FlexDirection.Column)
@@ -65,7 +60,7 @@ fun IndexPage() {
             flexGrow(1)
         }) {
             P {
-                Text("TODO")
+                Text(articles.toString())
             }
         }
 
