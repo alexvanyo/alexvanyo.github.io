@@ -57,14 +57,63 @@ fun IndexPage(
 
         Div(style = {
             padding(2.rem)
-            flexGrow(1)
+            display(DisplayStyle.Flex)
+            flexWrap(FlexWrap.Wrap)
+            property("gap", value("1rem"))
         }) {
-            P {
-                Text(articles.toString())
+            articles.forEach { article ->
+                WebsiteArticle(article)
             }
         }
 
+        Div(
+            style = {
+                flexGrow(1)
+            }
+        ) {
+            
+        }
+
         WebsiteFooter()
+    }
+}
+
+@Composable
+fun WebsiteArticle(article: Article) {
+    A(
+        href = article.url,
+    ) {
+        Div(
+            style = {
+                backgroundColor(Colors.primary)
+                padding(1.rem)
+                borderRadius(1.rem)
+                display(DisplayStyle.Flex)
+                flexWrap(FlexWrap.Wrap)
+                flexDirection(FlexDirection.Row)
+                alignItems(AlignItems.Center)
+                property("gap", value("1rem"))
+            }
+        ) {
+            Img(
+                src = article.imageUrl,
+                style = {
+                    height(5.rem)
+                    width(5.rem)
+                }
+            )
+
+            H4(
+                style = {
+                    color(Colors.textOnPrimary)
+                    property("text-decoration", StylePropertyValue("none"))
+                    marginTop(0.px)
+                    property("margin-bottom", StylePropertyValue(0.px))
+                }
+            ) {
+                Text(article.title)
+            }
+        }
     }
 }
 
