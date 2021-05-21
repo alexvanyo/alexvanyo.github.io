@@ -19,3 +19,15 @@ dependencies {
     implementation("io.ktor:ktor-client-cio:1.5.2")
     implementation("io.github.pdvrieze.xmlutil:serialization:0.82.0")
 }
+
+tasks {
+    val classes by existing
+
+    val runUpdateData by registering(JavaExec::class) {
+        dependsOn(classes)
+        main = "com.alexvanyo.website.datasync.ApplicationKt"
+        classpath = sourceSets.main.get().runtimeClasspath
+        args = listOf("$rootDir/website/src/jsMain/resources/data/articles.json")
+    }
+}
+
