@@ -1,0 +1,40 @@
+name: Update Website Content
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Cache Gradle Files
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: v1-${{ runner.os }}-gradle-${{ matrix.java-version }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', '**/buildSrc/**/*.kt') }}
+          restore-keys: |
+            v1-${{ runner.os }}-gradle-${{ matrix.java-version }}-
+
+      - name: Configure JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 15
+
+      - name: Run checks
+        run: ./gradlew check
+
+      - name: Update website content
+        run: ./gradlew :datasync:runUpdateData
+
