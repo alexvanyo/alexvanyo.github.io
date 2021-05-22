@@ -1,7 +1,7 @@
 plugins {
     application
     kotlin("jvm")
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.4.32"
+    id("org.jetbrains.kotlin.plugin.serialization") version Versions.kotlin
 }
 
 application {
