@@ -96,7 +96,6 @@ fun WebsiteArticle(article: Article) {
         href = article.url,
         style = {
             property("text-decoration", value("none"))
-            property("overflow", value("hidden"))
         }
     ) {
         Div(
