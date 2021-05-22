@@ -2,16 +2,12 @@ package com.alexvanyo.website.pages
 
 import androidx.compose.runtime.Composable
 import androidx.compose.web.css.AlignItems
-import androidx.compose.web.css.AlignSelf
 import androidx.compose.web.css.DisplayStyle
 import androidx.compose.web.css.FlexDirection
 import androidx.compose.web.css.FlexWrap
 import androidx.compose.web.css.JustifyContent
 import androidx.compose.web.css.LineStyle
-import androidx.compose.web.css.StylePropertyValue
 import androidx.compose.web.css.alignItems
-import androidx.compose.web.css.alignSelf
-import androidx.compose.web.css.auto
 import androidx.compose.web.css.backgroundColor
 import androidx.compose.web.css.border
 import androidx.compose.web.css.borderRadius
@@ -21,10 +17,8 @@ import androidx.compose.web.css.flexDirection
 import androidx.compose.web.css.flexGrow
 import androidx.compose.web.css.flexShrink
 import androidx.compose.web.css.flexWrap
-import androidx.compose.web.css.fr
 import androidx.compose.web.css.height
 import androidx.compose.web.css.justifyContent
-import androidx.compose.web.css.margin
 import androidx.compose.web.css.marginTop
 import androidx.compose.web.css.padding
 import androidx.compose.web.css.percent
@@ -32,13 +26,11 @@ import androidx.compose.web.css.px
 import androidx.compose.web.css.rem
 import androidx.compose.web.css.value
 import androidx.compose.web.css.vh
-import androidx.compose.web.css.vw
 import androidx.compose.web.css.width
 import androidx.compose.web.elements.A
 import androidx.compose.web.elements.Div
 import androidx.compose.web.elements.Footer
 import androidx.compose.web.elements.H1
-import androidx.compose.web.elements.H2
 import androidx.compose.web.elements.H3
 import androidx.compose.web.elements.H4
 import androidx.compose.web.elements.Img
@@ -49,7 +41,6 @@ import com.alexvanyo.website.data.Platform
 import com.alexvanyo.website.data.platforms
 import com.alexvanyo.website.models.Article
 import com.alexvanyo.website.styles.Colors
-import com.alexvanyo.website.styles.MainStylesheet
 import com.alexvanyo.website.styles.TextAlign
 import com.alexvanyo.website.styles.textAlign
 
@@ -103,6 +94,9 @@ fun IndexPage(
 fun WebsiteArticle(article: Article) {
     A(
         href = article.url,
+        style = {
+            property("text-decoration", value("none"))
+        }
     ) {
         Div(
             style = {
@@ -126,9 +120,8 @@ fun WebsiteArticle(article: Article) {
             H3(
                 style = {
                     color(Colors.textOnPrimary)
-                    property("text-decoration", StylePropertyValue("none"))
                     marginTop(0.px)
-                    property("margin-bottom", StylePropertyValue(0.px))
+                    property("margin-bottom", value(0.px))
                     textAlign(TextAlign.Center)
                 }
             ) {
@@ -150,7 +143,7 @@ fun WebsiteHeader() {
         Img(
             src = "img/alex-vanyo.jpg",
             style = {
-                property("object-fit", StylePropertyValue("cover"))
+                property("object-fit", value("cover"))
                 borderRadius(50.percent)
                 height(10.rem)
                 width(10.rem)
@@ -196,6 +189,9 @@ fun WebsiteFooter() {
 fun PlatformLink(platform: Platform) {
     A(
         href = platform.url,
+        style = {
+            property("text-decoration", value("none"))
+        }
     ) {
         Div(
             style = {
@@ -222,9 +218,8 @@ fun PlatformLink(platform: Platform) {
                 style = {
                     display(DisplayStyle.Inline)
                     color(Colors.textOnPrimary)
-                    property("text-decoration", StylePropertyValue("none"))
                     marginTop(0.px)
-                    property("margin-bottom", StylePropertyValue(0.px))
+                    property("margin-bottom", value(0.px))
                 }
             ) {
                 Text(platform.name)
