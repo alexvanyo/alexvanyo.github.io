@@ -70,7 +70,7 @@ fun IndexPage(
                 padding(2.rem)
                 display(DisplayStyle.Grid)
                 property("grid-gap", value("1rem"))
-                property("grid-template-columns", value("repeat(auto-fit, minmax(min(30rem, 100vw), 1fr))"))
+                property("grid-template-columns", value("repeat(auto-fit, minmax(min(30rem, 100%), 1fr))"))
             }) {
                 articles.forEach { article ->
                     WebsiteArticle(article)
@@ -96,6 +96,7 @@ fun WebsiteArticle(article: Article) {
         href = article.url,
         style = {
             property("text-decoration", value("none"))
+            property("overflow", value("hidden"))
         }
     ) {
         Div(
