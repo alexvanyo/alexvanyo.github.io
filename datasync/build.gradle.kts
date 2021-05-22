@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":data"))
+    implementation(projects.data)
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.serialization)
     implementation(libs.ktor.client.cio)

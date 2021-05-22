@@ -16,7 +16,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":data"))
+                implementation(projects.data)
             }
         }
         val jsMain by getting {
