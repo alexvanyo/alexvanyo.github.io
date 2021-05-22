@@ -11,10 +11,11 @@ import io.ktor.http.ContentType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.builtins.ListSerializer
-import kotlinx.serialization.json.Json
 import nl.adaptivity.xmlutil.serialization.DefaultXmlSerializationPolicy
 import nl.adaptivity.xmlutil.serialization.XML
 import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
 
 suspend fun main(args: Array<String>) {
     val client = HttpClient(CIO) {
@@ -50,8 +51,14 @@ suspend fun main(args: Array<String>) {
         println(serializedArticles)
     } else {
         val outputDir = args[0]
+        val outputDirFile = File(outputDir)
+
         withContext(Dispatchers.IO) {
-            File(outputDir).writeText(serializedArticles)
+            outputDirFile.mkdirs()
+            File(outputDirFile, "articles.json").apply {
+                createNewFile()
+                writeText(serializedArticles)
+            }
         }
     }
 }

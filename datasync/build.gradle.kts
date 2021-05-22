@@ -21,12 +21,13 @@ dependencies {
 }
 
 tasks {
+    val run by existing(JavaExec::class)
     val classes by existing
 
     val runUpdateData by registering(JavaExec::class) {
         dependsOn(classes)
-        main = "com.alexvanyo.website.datasync.ApplicationKt"
-        classpath = sourceSets.main.get().runtimeClasspath
-        args = listOf("$rootDir/website/src/jsMain/resources/data/articles.json")
+        main = run.get().main
+        classpath = run.get().classpath
+        args = listOf("$rootDir/website/src/jsMain/resources/data")
     }
 }
