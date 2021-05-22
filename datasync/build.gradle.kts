@@ -14,10 +14,10 @@ repositories {
 
 dependencies {
     implementation(project(":data"))
-    implementation("io.ktor:ktor-client-core:1.5.2")
-    implementation("io.ktor:ktor-client-serialization:1.5.2")
-    implementation("io.ktor:ktor-client-cio:1.5.2")
-    implementation("io.github.pdvrieze.xmlutil:serialization:0.82.0")
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.serialization)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.xmlutil.serialization)
 }
 
 tasks {
@@ -30,4 +30,3 @@ tasks {
         args = listOf("$rootDir/website/src/jsMain/resources/data/articles.json")
     }
 }
-
