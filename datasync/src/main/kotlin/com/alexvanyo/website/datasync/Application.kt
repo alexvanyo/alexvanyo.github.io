@@ -14,8 +14,6 @@ import kotlinx.serialization.builtins.ListSerializer
 import nl.adaptivity.xmlutil.serialization.DefaultXmlSerializationPolicy
 import nl.adaptivity.xmlutil.serialization.XML
 import java.io.File
-import java.nio.file.Files
-import java.nio.file.Paths
 
 suspend fun main(args: Array<String>) {
     val client = HttpClient(CIO) {
