@@ -64,13 +64,13 @@ fun IndexPage(
             }
         ) {
             Div(style = {
-                property("flex-basis", value(100.rem))
+                property("flex-basis", value(80.rem))
                 flexGrow(0)
                 flexShrink(1)
                 padding(2.rem)
                 display(DisplayStyle.Grid)
                 property("grid-gap", value("1rem"))
-                property("grid-template-columns", value("repeat(auto-fit, minmax(min(30rem, 100%), 1fr))"))
+                property("grid-template-columns", value("repeat(auto-fit, minmax(min(20rem, 100%), 1fr))"))
             }) {
                 articles.forEach { article ->
                     WebsiteArticle(article)
