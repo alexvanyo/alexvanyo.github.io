@@ -33,12 +33,16 @@ suspend fun main(args: Array<String>) {
 
     val rssFeed = client.get<RssFeed>("https://medium.com/feed/@alexvanyo")
 
-    val imageUrlRegex = Regex("""<img.*src="(.*)".*/>""")
+    /**
+     * Regex to pull out the url for images within the article content.
+     */
+    val imageUrlRegex = Regex("""<img.*?src="(.*?)".*?/>""")
 
     val articleList = rssFeed.channel.items.map { rssItem ->
         Article(
             title = rssItem.title,
             url = rssItem.link,
+            // Find the url for the first image in the article
             imageUrl = imageUrlRegex.find(rssItem.content)!!.groupValues[1]
         )
     }
