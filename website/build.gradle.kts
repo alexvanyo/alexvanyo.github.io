@@ -17,6 +17,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(projects.data)
+                implementation("com.arkivanov.decompose:decompose:0.2.4")
             }
         }
         val jsMain by getting {
