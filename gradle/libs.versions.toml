@@ -1,9 +1,12 @@
 [versions]
+decompose = "0.2.4"
 kotlinx-serialization = "1.1.0"
 ktor = "1.5.2"
 xmlutil = "0.82.0"
 
 [libraries]
+decompose-core = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
+
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
