@@ -27,5 +27,8 @@ data class RssItem(
     val link: String,
     @XmlElement(true)
     @XmlSerialName("encoded", "http://purl.org/rss/1.0/modules/content/", "content")
-    val content: String,
+    val content: String? = null,
+    @XmlElement(true)
+    @XmlSerialName("description", "", "")
+    val description: String? = null,
 )
