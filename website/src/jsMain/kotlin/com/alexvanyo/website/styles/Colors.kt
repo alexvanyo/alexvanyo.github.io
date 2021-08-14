@@ -1,6 +1,6 @@
 package com.alexvanyo.website.styles
 
-import androidx.compose.web.css.Color
+import org.jetbrains.compose.web.css.Color
 
 object Colors {
     val background = Color("#212121")

@@ -1,10 +1,10 @@
 package com.alexvanyo.website.datasync
 
-import io.ktor.client.call.TypeInfo
 import io.ktor.client.features.json.JsonSerializer
 import io.ktor.http.ContentType
 import io.ktor.http.content.OutgoingContent
 import io.ktor.http.content.TextContent
+import io.ktor.util.reflect.TypeInfo
 import io.ktor.utils.io.core.Input
 import io.ktor.utils.io.core.readText
 import kotlinx.serialization.InternalSerializationApi
@@ -28,6 +28,7 @@ class XMLSerializer(private val format: XML) : JsonSerializer {
         return format.decodeFromString(mapper, text) ?: error("Failed to parse response of type $type. The result is null.")
     }
 
+    @Suppress("UNCHECKED_CAST")
     @OptIn(InternalSerializationApi::class)
     override fun write(data: Any, contentType: ContentType): OutgoingContent {
         val serializer = data::class.serializer() as KSerializer<Any>

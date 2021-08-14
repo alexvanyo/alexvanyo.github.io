@@ -5,8 +5,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.web.css.Style
-import androidx.compose.web.renderComposable
 import com.alexvanyo.website.data.websiteJson
 import com.alexvanyo.website.models.Article
 import com.alexvanyo.website.pages.BackstackPage
@@ -15,6 +13,8 @@ import com.alexvanyo.website.styles.MainStylesheet
 import kotlinx.browser.window
 import kotlinx.coroutines.await
 import kotlinx.serialization.builtins.ListSerializer
+import org.jetbrains.compose.web.css.Style
+import org.jetbrains.compose.web.renderComposable
 import org.w3c.dom.url.URLSearchParams
 
 fun main() {

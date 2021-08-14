@@ -1,32 +1,44 @@
 package com.alexvanyo.website.pages
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.web.css.padding
-import androidx.compose.web.css.px
-import androidx.compose.web.elements.Button
-import androidx.compose.web.elements.Div
-import androidx.compose.web.elements.Span
-import androidx.compose.web.elements.Text
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.decompose.Router
 import com.arkivanov.decompose.RouterState
-import com.arkivanov.decompose.extensions.compose.jetbrains.Children
+import com.arkivanov.decompose.extensions.compose.jetbrains.lifecycle.lifecycle
+import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
 import com.arkivanov.decompose.pop
 import com.arkivanov.decompose.push
 import com.arkivanov.decompose.router
-import com.arkivanov.decompose.statekeeper.Parcelable
 import com.arkivanov.decompose.value.Value
+import com.arkivanov.essenty.parcelable.Parcelable
 import kotlinx.browser.window
+import org.jetbrains.compose.web.css.padding
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Button
+import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.Span
+import org.jetbrains.compose.web.dom.Text
 import org.w3c.dom.get
 import org.w3c.dom.set
-import rememberRootComponent
 
 @Composable
 fun BackstackPage() {
-    val component = rememberRootComponent { RootComponent(it) }
+    val lifecycle = lifecycle()
+    val component = remember {
+        RootComponent(
+            DefaultComponentContext(
+                lifecycle = lifecycle,
+                stateKeeper = null,
+                instanceKeeper = null,
+                backPressedDispatcher = null
+            )
+        )
+    }
 
     BackstackScreen(component)
 }
@@ -105,13 +117,14 @@ class CounterComponent(
 fun BackstackScreen(
     root: Root,
 ) {
-    Children(root.routerState) {
-        CounterScreen(
-            it.instance.counter,
-            root::navigateBack,
-            root::navigateForward,
-        )
-    }
+    val state by root.routerState.subscribeAsState()
+    val child = state.activeChild
+
+    CounterScreen(
+        child.instance.counter,
+        root::navigateBack,
+        root::navigateForward,
+    )
 }
 
 @Composable
@@ -120,36 +133,42 @@ fun CounterScreen(
     onBackClicked: () -> Unit,
     onForwardClicked: () -> Unit,
 ) {
-    Div(style = { padding(25.px) }) {
+    Div({
+        style { padding(25.px) }
+    }) {
         if (counter.isBackEnabled) {
-            Button(attrs = {
+            Button({
                 onClick { onBackClicked() }
             }) {
                 Text("Back")
             }
         }
 
-        Span(style = { padding(15.px) }) {
+        Span({
+            style { padding(15.px) }
+        }) {
             Text("id: ${counter.index}")
         }
 
-        Button(attrs = {
+        Button({
             onClick { counter.count-- }
         }) {
             Text("-")
         }
 
-        Span(style = { padding(15.px) }) {
+        Span({
+            style { padding(15.px) }
+        }) {
             Text("${counter.count}")
         }
 
-        Button(attrs = {
+        Button({
             onClick { counter.count++ }
         }) {
             Text("+")
         }
 
-        Button(attrs = {
+        Button({
             onClick { onForwardClicked() }
         }) {
             Text("Forward")

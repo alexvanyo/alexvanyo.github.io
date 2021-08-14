@@ -1,4 +1,4 @@
 object Versions {
-    const val kotlin = "1.4.32"
-    const val composeWeb = "0.0.0-web-dev-12"
+    const val kotlin = "1.5.21"
+    const val composeWeb = "1.0.0-alpha3"
 }

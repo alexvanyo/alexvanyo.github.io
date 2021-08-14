@@ -1,89 +1,95 @@
 package com.alexvanyo.website.pages
 
 import androidx.compose.runtime.Composable
-import androidx.compose.web.css.AlignItems
-import androidx.compose.web.css.DisplayStyle
-import androidx.compose.web.css.FlexDirection
-import androidx.compose.web.css.FlexWrap
-import androidx.compose.web.css.JustifyContent
-import androidx.compose.web.css.LineStyle
-import androidx.compose.web.css.alignItems
-import androidx.compose.web.css.backgroundColor
-import androidx.compose.web.css.border
-import androidx.compose.web.css.borderRadius
-import androidx.compose.web.css.color
-import androidx.compose.web.css.display
-import androidx.compose.web.css.flexDirection
-import androidx.compose.web.css.flexGrow
-import androidx.compose.web.css.flexShrink
-import androidx.compose.web.css.flexWrap
-import androidx.compose.web.css.height
-import androidx.compose.web.css.justifyContent
-import androidx.compose.web.css.marginTop
-import androidx.compose.web.css.padding
-import androidx.compose.web.css.percent
-import androidx.compose.web.css.px
-import androidx.compose.web.css.rem
-import androidx.compose.web.css.value
-import androidx.compose.web.css.vh
-import androidx.compose.web.css.width
-import androidx.compose.web.elements.A
-import androidx.compose.web.elements.Div
-import androidx.compose.web.elements.Footer
-import androidx.compose.web.elements.H1
-import androidx.compose.web.elements.H3
-import androidx.compose.web.elements.H4
-import androidx.compose.web.elements.Img
-import androidx.compose.web.elements.P
-import androidx.compose.web.elements.Section
-import androidx.compose.web.elements.Text
 import com.alexvanyo.website.data.Platform
 import com.alexvanyo.website.data.platforms
 import com.alexvanyo.website.models.Article
 import com.alexvanyo.website.styles.Colors
 import com.alexvanyo.website.styles.TextAlign
 import com.alexvanyo.website.styles.textAlign
+import org.jetbrains.compose.web.css.AlignItems
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.FlexDirection
+import org.jetbrains.compose.web.css.FlexWrap
+import org.jetbrains.compose.web.css.JustifyContent
+import org.jetbrains.compose.web.css.LineStyle
+import org.jetbrains.compose.web.css.alignItems
+import org.jetbrains.compose.web.css.backgroundColor
+import org.jetbrains.compose.web.css.border
+import org.jetbrains.compose.web.css.borderRadius
+import org.jetbrains.compose.web.css.color
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.display
+import org.jetbrains.compose.web.css.flexDirection
+import org.jetbrains.compose.web.css.flexGrow
+import org.jetbrains.compose.web.css.flexShrink
+import org.jetbrains.compose.web.css.flexWrap
+import org.jetbrains.compose.web.css.height
+import org.jetbrains.compose.web.css.justifyContent
+import org.jetbrains.compose.web.css.marginTop
+import org.jetbrains.compose.web.css.padding
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.style
+import org.jetbrains.compose.web.css.vh
+import org.jetbrains.compose.web.css.width
+import org.jetbrains.compose.web.dom.A
+import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.Footer
+import org.jetbrains.compose.web.dom.H1
+import org.jetbrains.compose.web.dom.H3
+import org.jetbrains.compose.web.dom.H4
+import org.jetbrains.compose.web.dom.Img
+import org.jetbrains.compose.web.dom.P
+import org.jetbrains.compose.web.dom.Section
+import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun IndexPage(
     articles: List<Article>
 ) {
-    Div(style = {
-        display(DisplayStyle.Flex)
-        flexDirection(FlexDirection.Column)
-        property("min-height", value(100.vh))
-        justifyContent(JustifyContent.Center)
+    Div({
+        style {
+            display(DisplayStyle.Flex)
+            flexDirection(FlexDirection.Column)
+            property("min-height", 100.vh)
+            justifyContent(JustifyContent.Center)
+        }
     }) {
 
         WebsiteHeader()
 
-        Div(
-            style = {
+        Div({
+            style {
                 display(DisplayStyle.Flex)
                 justifyContent(JustifyContent.Center)
             }
-        ) {
-            Div(style = {
-                property("flex-basis", value(80.rem))
-                flexGrow(0)
-                flexShrink(1)
-                padding(2.rem)
-                display(DisplayStyle.Grid)
-                property("grid-gap", value("1rem"))
-                property("grid-template-columns", value("repeat(auto-fit, minmax(min(20rem, 100%), 1fr))"))
-            }) {
+        }) {
+            Div(
+                attrs = {
+                    style {
+                        property("flex-basis", 80.cssRem)
+                        flexGrow(0)
+                        flexShrink(1)
+                        padding(2.cssRem)
+                        display(DisplayStyle.Grid)
+                        property("grid-gap", "1rem")
+                        property("grid-template-columns", "repeat(auto-fit, minmax(min(20rem, 100%), 1fr))")
+                    }
+                }
+            ) {
                 articles.forEach { article ->
                     WebsiteArticle(article)
                 }
             }
         }
 
-        Div(
-            style = {
+        Div({
+            style {
                 flexGrow(1)
             }
-        ) {
-            
+        }) {
+
         }
 
         WebsiteFooter()
@@ -94,37 +100,41 @@ fun IndexPage(
 fun WebsiteArticle(article: Article) {
     A(
         href = article.url,
-        style = {
-            property("text-decoration", value("none"))
+        attrs = {
+            style {
+                property("text-decoration", "none")
+            }
         }
     ) {
-        Div(
-            style = {
+        Div({
+            style {
                 backgroundColor(Colors.primary)
-                padding(1.rem)
-                borderRadius(1.rem)
+                padding(1.cssRem)
+                borderRadius(1.cssRem)
                 display(DisplayStyle.Flex)
                 flexWrap(FlexWrap.Wrap)
                 flexDirection(FlexDirection.Column)
                 alignItems(AlignItems.Center)
-                property("gap", value("1rem"))
+                property("gap", "1rem")
             }
-        ) {
+        }) {
             Img(
                 src = article.imageUrl,
-                style = {
-                    height(10.rem)
+                attrs = {
+                    style {
+                        height(10.cssRem)
+                    }
                 }
             )
 
-            H3(
-                style = {
+            H3({
+                style {
                     color(Colors.textOnPrimary)
                     marginTop(0.px)
-                    property("margin-bottom", value(0.px))
+                    property("margin-bottom", 0.px)
                     textAlign(TextAlign.Center)
                 }
-            ) {
+            }) {
                 Text(article.title)
             }
         }
@@ -133,26 +143,28 @@ fun WebsiteArticle(article: Article) {
 
 @Composable
 fun WebsiteHeader() {
-    Section(
-        style = {
+    Section({
+        style {
             backgroundColor(Colors.elevatedBackground)
             textAlign(TextAlign.Center)
-            padding(2.rem)
+            padding(2.cssRem)
         }
-    ) {
+    }) {
         Img(
             src = "img/alex-vanyo.jpg",
-            style = {
-                property("object-fit", value("cover"))
-                borderRadius(50.percent)
-                height(10.rem)
-                width(10.rem)
-                border {
-                    style(LineStyle.Solid)
-                    width(0.3.rem)
-                    color(Colors.primary)
+            attrs = {
+                style {
+                    property("object-fit", "cover")
+                    borderRadius(50.percent)
+                    height(10.cssRem)
+                    width(10.cssRem)
+                    border {
+                        style(LineStyle.Solid)
+                        width(0.3.cssRem)
+                        color(Colors.primary)
+                    }
                 }
-            },
+            }
         )
 
         H1 {
@@ -166,19 +178,19 @@ fun WebsiteHeader() {
 
 @Composable
 fun WebsiteFooter() {
-    Footer(
-        style = {
+    Footer({
+        style {
             backgroundColor(Colors.elevatedBackground)
-            padding(2.rem)
+            padding(2.cssRem)
             textAlign(TextAlign.Center)
             display(DisplayStyle.Flex)
             flexWrap(FlexWrap.Wrap)
             flexDirection(FlexDirection.Row)
             alignItems(AlignItems.Center)
             justifyContent(JustifyContent.Center)
-            property("gap", value("1rem"))
+            property("gap", 1.cssRem)
         }
-    ) {
+    }) {
         platforms.forEach { platform ->
             PlatformLink(platform)
         }
@@ -189,39 +201,43 @@ fun WebsiteFooter() {
 fun PlatformLink(platform: Platform) {
     A(
         href = platform.url,
-        style = {
-            property("text-decoration", value("none"))
+        attrs = {
+            style {
+                property("text-decoration", "none")
+            }
         }
     ) {
-        Div(
-            style = {
+        Div({
+            style {
                 backgroundColor(Colors.primary)
-                padding(1.rem)
-                borderRadius(1.rem)
+                padding(1.cssRem)
+                borderRadius(1.cssRem)
                 display(DisplayStyle.Flex)
                 flexWrap(FlexWrap.Wrap)
                 flexDirection(FlexDirection.Row)
                 alignItems(AlignItems.Center)
-                property("gap", value("1rem"))
+                property("gap", 1.cssRem)
             }
-        ) {
+        }) {
             Img(
                 src = platform.icon,
-                style = {
-                    height(2.rem)
-                    width(2.rem)
-                    display(DisplayStyle.Inline)
+                attrs = {
+                    style {
+                        height(2.cssRem)
+                        width(2.cssRem)
+                        display(DisplayStyle.Inline)
+                    }
                 }
             )
 
-            H4(
-                style = {
+            H4({
+                style {
                     display(DisplayStyle.Inline)
                     color(Colors.textOnPrimary)
                     marginTop(0.px)
-                    property("margin-bottom", value(0.px))
+                    property("margin-bottom", 0.px)
                 }
-            ) {
+            }) {
                 Text(platform.name)
             }
         }

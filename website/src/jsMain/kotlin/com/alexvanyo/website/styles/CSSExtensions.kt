@@ -1,21 +1,19 @@
 package com.alexvanyo.website.styles
 
-import androidx.compose.web.css.CSSBuilder
-import androidx.compose.web.css.CSSStyleRuleBuilder
-import androidx.compose.web.css.StyleBuilder
-import androidx.compose.web.css.StylePropertyValue
-import androidx.compose.web.css.value
+import org.jetbrains.compose.web.css.CSSBuilder
+import org.jetbrains.compose.web.css.CSSStyleRuleBuilder
+import org.jetbrains.compose.web.css.StyleBuilder
 
 fun CSSBuilder.fontFamily(value: String) {
-    property("font-family", value(value))
+    property("font-family", value)
 }
 
 fun CSSStyleRuleBuilder.fontFamily(value: String) {
-    property("font-family", value(value))
+    property("font-family", value)
 }
 
 fun CSSStyleRuleBuilder.fontVariant(fontVariantCaps: FontVariantCaps) {
-    property("font-variant", StylePropertyValue(fontVariantCaps.value))
+    property("font-variant", fontVariantCaps.value)
 }
 
 enum class FontVariantCaps(val value: String) {
@@ -29,7 +27,7 @@ enum class FontVariantCaps(val value: String) {
 }
 
 fun StyleBuilder.textAlign(textAlign: TextAlign) {
-    property("text-align", StylePropertyValue(textAlign.value))
+    property("text-align", textAlign.value)
 }
 
 enum class TextAlign(val value: String) {

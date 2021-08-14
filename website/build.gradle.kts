@@ -22,7 +22,7 @@ kotlin {
         }
         val jsMain by getting {
             dependencies {
-                implementation(compose.web.web)
+                implementation(compose.web.core)
                 implementation(compose.runtime)
             }
         }
