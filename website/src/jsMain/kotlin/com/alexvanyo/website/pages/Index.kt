@@ -1,12 +1,18 @@
 package com.alexvanyo.website.pages
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import com.alexvanyo.website.data.Platform
 import com.alexvanyo.website.data.platforms
+import com.alexvanyo.website.data.websiteJson
 import com.alexvanyo.website.models.Article
 import com.alexvanyo.website.styles.Colors
 import com.alexvanyo.website.styles.TextAlign
 import com.alexvanyo.website.styles.textAlign
+import kotlinx.browser.window
+import kotlinx.coroutines.await
+import kotlinx.serialization.builtins.ListSerializer
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
@@ -45,6 +51,15 @@ import org.jetbrains.compose.web.dom.Section
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
+fun IndexPage() {
+    val articles by produceState(emptyList<Article>()) {
+        val articlesJson = window.fetch("data/articles.json").await().text().await()
+        value = websiteJson.decodeFromString(ListSerializer(Article.serializer()), articlesJson)
+    }
+    IndexPage(articles)
+}
+
+@Composable
 fun IndexPage(
     articles: List<Article>
 ) {
@@ -73,7 +88,7 @@ fun IndexPage(
                         flexShrink(1)
                         padding(2.cssRem)
                         display(DisplayStyle.Grid)
-                        property("grid-gap", "1rem")
+                        property("grid-gap", 1.cssRem)
                         property("grid-template-columns", "repeat(auto-fit, minmax(min(20rem, 100%), 1fr))")
                     }
                 }
@@ -115,7 +130,7 @@ fun WebsiteArticle(article: Article) {
                 flexWrap(FlexWrap.Wrap)
                 flexDirection(FlexDirection.Column)
                 alignItems(AlignItems.Center)
-                property("gap", "1rem")
+                property("gap", 1.cssRem)
             }
         }) {
             Img(
