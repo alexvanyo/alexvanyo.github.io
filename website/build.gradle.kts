@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose") version Versions.composeWeb
+    id("io.gitlab.arturbosch.detekt") version Versions.detekt
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
@@ -33,4 +34,8 @@ kotlin {
             }
         }
     }
+}
+
+detekt {
+    source = files("src/jsMain/kotlin")
 }

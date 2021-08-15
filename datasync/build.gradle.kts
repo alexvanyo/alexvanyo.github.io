@@ -4,6 +4,7 @@ plugins {
     application
     kotlin("jvm")
     id("org.jetbrains.kotlin.plugin.serialization") version Versions.kotlin
+    id("io.gitlab.arturbosch.detekt") version Versions.detekt
 }
 
 tasks.withType<KotlinCompile>().configureEach {
@@ -39,4 +40,8 @@ tasks {
         classpath = run.get().classpath
         args = listOf("$rootDir/website/src/jsMain/resources/data")
     }
+}
+
+detekt {
+    source = files("src/main/kotlin")
 }

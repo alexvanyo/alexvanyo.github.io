@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.kotlin.plugin.serialization") version Versions.kotlin
+    id("io.gitlab.arturbosch.detekt") version Versions.detekt
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
@@ -26,4 +27,8 @@ kotlin {
             }
         }
     }
+}
+
+detekt {
+    source = files("src/commonMain/kotlin")
 }

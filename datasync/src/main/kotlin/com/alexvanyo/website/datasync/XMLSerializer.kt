@@ -26,7 +26,8 @@ class XMLSerializer(private val format: XML) : JsonSerializer {
             ?: type.kotlinType?.let { serializer(it) }
             ?: type.type.serializer()
 
-        return format.decodeFromString(mapper, text) ?: error("Failed to parse response of type $type. The result is null.")
+        return format.decodeFromString(mapper, text)
+            ?: error("Failed to parse response of type $type. The result is null.")
     }
 
     @Suppress("UNCHECKED_CAST")
