@@ -16,5 +16,10 @@ val platforms = listOf(
         name = "GitHub",
         icon = "img/github.png",
         url = "https://github.com/alexvanyo"
+    ),
+    Platform(
+        name = "Twitter",
+        icon = "img/twitter.svg",
+        url = "https://twitter.com/alex_vanyo"
     )
 )
