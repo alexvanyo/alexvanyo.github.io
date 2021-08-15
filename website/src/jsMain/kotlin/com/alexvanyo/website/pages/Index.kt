@@ -80,19 +80,17 @@ fun IndexPage(
                 justifyContent(JustifyContent.Center)
             }
         }) {
-            Div(
-                attrs = {
-                    style {
-                        property("flex-basis", 80.cssRem)
-                        flexGrow(0)
-                        flexShrink(1)
-                        padding(2.cssRem)
-                        display(DisplayStyle.Grid)
-                        property("grid-gap", 1.cssRem)
-                        property("grid-template-columns", "repeat(auto-fit, minmax(min(20rem, 100%), 1fr))")
-                    }
+            Div({
+                style {
+                    property("flex-basis", 80.cssRem)
+                    flexGrow(0)
+                    flexShrink(1)
+                    padding(2.cssRem)
+                    display(DisplayStyle.Grid)
+                    property("grid-gap", 1.cssRem)
+                    property("grid-template-columns", "repeat(auto-fit, minmax(min(20rem, 100%), 1fr))")
                 }
-            ) {
+            }) {
                 articles.forEach { article ->
                     WebsiteArticle(article)
                 }
