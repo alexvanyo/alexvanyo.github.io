@@ -1,7 +1,16 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     application
     kotlin("jvm")
     id("org.jetbrains.kotlin.plugin.serialization") version Versions.kotlin
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+    kotlinOptions {
+        allWarningsAsErrors = true
+        freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
+    }
 }
 
 application {
@@ -26,7 +35,7 @@ tasks {
 
     val runUpdateData by registering(JavaExec::class) {
         dependsOn(classes)
-        main = run.get().main
+        mainClass.set(run.get().mainClass.get())
         classpath = run.get().classpath
         args = listOf("$rootDir/website/src/jsMain/resources/data")
     }

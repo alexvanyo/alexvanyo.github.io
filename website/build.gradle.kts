@@ -3,6 +3,12 @@ plugins {
     id("org.jetbrains.compose") version Versions.composeWeb
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions {
+        allWarningsAsErrors = true
+    }
+}
+
 repositories {
     mavenCentral()
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")

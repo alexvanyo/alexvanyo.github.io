@@ -3,6 +3,12 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version Versions.kotlin
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions {
+        allWarningsAsErrors = true
+    }
+}
+
 repositories {
     mavenCentral()
 }

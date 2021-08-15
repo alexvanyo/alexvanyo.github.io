@@ -7,6 +7,7 @@ import io.ktor.http.content.TextContent
 import io.ktor.util.reflect.TypeInfo
 import io.ktor.utils.io.core.Input
 import io.ktor.utils.io.core.readText
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.serializer
@@ -16,7 +17,7 @@ import nl.adaptivity.xmlutil.serialization.XML
  * Based on https://github.com/pdvrieze/xmlutil/issues/40
  */
 class XMLSerializer(private val format: XML) : JsonSerializer {
-    @OptIn(InternalSerializationApi::class)
+    @OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
     override fun read(type: TypeInfo, body: Input): Any {
         val text = body.readText()
         val deserializationStrategy = format.serializersModule.getContextual(type.type)
