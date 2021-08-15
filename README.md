@@ -1,4 +1,4 @@
-The source code for my personal website, hosted at https://alexvanyo.github.io.
+The source code for my personal website, hosted at https://alexvanyo.com.
 
 The website is written almost exclusively in Kotlin, using [Compose for Web](https://compose-web.ui.pages.jetbrains.team/) for the interface.
 
