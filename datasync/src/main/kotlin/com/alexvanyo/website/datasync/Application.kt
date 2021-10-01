@@ -11,10 +11,12 @@ import io.ktor.http.ContentType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.builtins.ListSerializer
+import nl.adaptivity.xmlutil.ExperimentalXmlUtilApi
 import nl.adaptivity.xmlutil.serialization.DefaultXmlSerializationPolicy
 import nl.adaptivity.xmlutil.serialization.XML
 import java.io.File
 
+@OptIn(ExperimentalXmlUtilApi::class)
 suspend fun main(args: Array<String>) {
     val client = HttpClient(CIO) {
         install(JsonFeature) {
@@ -23,7 +25,7 @@ suspend fun main(args: Array<String>) {
                     policy = DefaultXmlSerializationPolicy(
                         pedantic = false,
                         autoPolymorphic = true,
-                        unknownChildHandler = { _, _, _, _ -> },
+                        unknownChildHandler = { _, _, _, _, _ -> emptyList() },
                     )
                 }
             )
