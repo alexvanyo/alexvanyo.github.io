@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     application
     kotlin("jvm")
-    id("org.jetbrains.kotlin.plugin.serialization") version Versions.kotlin
-    id("io.gitlab.arturbosch.detekt") version Versions.detekt
+    alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.detekt)
 }
 
 tasks.withType<KotlinCompile>().configureEach {

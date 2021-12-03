@@ -1,7 +1,7 @@
 plugins {
-    kotlin("multiplatform")
-    id("org.jetbrains.kotlin.plugin.serialization") version Versions.kotlin
-    id("io.gitlab.arturbosch.detekt") version Versions.detekt
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.detekt)
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {

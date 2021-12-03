@@ -1,7 +1,7 @@
 plugins {
     kotlin("multiplatform")
-    id("org.jetbrains.compose") version Versions.composeWeb
-    id("io.gitlab.arturbosch.detekt") version Versions.detekt
+    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.detekt)
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
