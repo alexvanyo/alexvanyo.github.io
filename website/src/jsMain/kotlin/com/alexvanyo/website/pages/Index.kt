@@ -136,6 +136,8 @@ fun WebsiteArticle(article: Article) {
                 attrs = {
                     style {
                         height(10.cssRem)
+                        width(100.percent)
+                        property("object-fit", "contain")
                     }
                 }
             )

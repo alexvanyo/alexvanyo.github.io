@@ -2,7 +2,7 @@ package com.alexvanyo.website.styles
 
 import org.jetbrains.compose.web.css.CSSBuilder
 import org.jetbrains.compose.web.css.CSSStyleRuleBuilder
-import org.jetbrains.compose.web.css.StyleBuilder
+import org.jetbrains.compose.web.css.StyleScope
 
 fun CSSBuilder.fontFamily(value: String) {
     property("font-family", value)
@@ -26,7 +26,7 @@ enum class FontVariantCaps(val value: String) {
     TitlingCaps("titling-caps"),
 }
 
-fun StyleBuilder.textAlign(textAlign: TextAlign) {
+fun StyleScope.textAlign(textAlign: TextAlign) {
     property("text-align", textAlign.value)
 }
 
