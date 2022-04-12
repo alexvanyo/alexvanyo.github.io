@@ -18,7 +18,6 @@ import nl.adaptivity.xmlutil.serialization.DefaultXmlSerializationPolicy
 import nl.adaptivity.xmlutil.serialization.XML
 import java.io.File
 
-
 suspend fun main(args: Array<String>) {
     val client = HttpClient(CIO) {
         install(ContentNegotiation) {
