@@ -24,10 +24,10 @@ repositories {
 
 dependencies {
     implementation(projects.data)
+    implementation(libs.ktor.client.content.negotation)
     implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.serialization)
     implementation(libs.ktor.client.cio)
-    implementation(libs.xmlutil.serialization)
+    implementation(libs.ktor.serialization.xml)
 }
 
 tasks {

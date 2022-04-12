@@ -4,10 +4,12 @@ import com.alexvanyo.website.data.websiteJson
 import com.alexvanyo.website.datasync.models.RssFeed
 import com.alexvanyo.website.models.Article
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
-import io.ktor.client.features.json.JsonFeature
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
 import io.ktor.http.ContentType
+import io.ktor.serialization.kotlinx.xml.xml
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.builtins.ListSerializer
@@ -16,24 +18,25 @@ import nl.adaptivity.xmlutil.serialization.DefaultXmlSerializationPolicy
 import nl.adaptivity.xmlutil.serialization.XML
 import java.io.File
 
-@OptIn(ExperimentalXmlUtilApi::class)
+
 suspend fun main(args: Array<String>) {
     val client = HttpClient(CIO) {
-        install(JsonFeature) {
-            serializer = XMLSerializer(
-                XML {
+        install(ContentNegotiation) {
+            xml(
+                format = XML {
+                    @OptIn(ExperimentalXmlUtilApi::class)
                     policy = DefaultXmlSerializationPolicy(
                         pedantic = false,
                         autoPolymorphic = true,
                         unknownChildHandler = { _, _, _, _, _ -> emptyList() },
                     )
-                }
+                },
+                contentType = ContentType.Text.Xml
             )
-            accept(ContentType.Application.Xml, ContentType.Text.Xml)
         }
     }
 
-    val rssFeed = client.get<RssFeed>("https://medium.com/feed/@alexvanyo")
+    val rssFeed: RssFeed = client.get("https://medium.com/feed/@alexvanyo").body()
 
     /**
      * Regex to pull out the url for images within the article content.
