@@ -1,22 +1,16 @@
 [versions]
 compose = "1.1.1"
-decompose = "0.3.1"
 detekt = "1.18.0"
 kotlin = "1.6.10"
 kotlinx-serialization = "1.3.2"
-ktor = "1.6.8"
-xmlutil = "0.84.1"
+ktor = "2.0.0"
 
 [libraries]
-decompose-core = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
-
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
-
+ktor-client-content-negotation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
-ktor-client-serialization = { group = "io.ktor", name = "ktor-client-serialization", version.ref = "ktor" }
 ktor-client-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
-
-xmlutil-serialization = { group = "io.github.pdvrieze.xmlutil", name = "serialization", version.ref = "xmlutil" }
+ktor-serialization-xml = { group = "io.ktor", name = "ktor-serialization-kotlinx-xml", version.ref = "ktor" }
 
 [plugins]
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose" }

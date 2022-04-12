@@ -24,7 +24,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(projects.data)
-                implementation(libs.decompose.core)
             }
         }
         val jsMain by getting {
