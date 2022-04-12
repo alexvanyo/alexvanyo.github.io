@@ -1,18 +1,7 @@
 plugins {
-    kotlin("multiplatform")
+    id("com.alexvanyo.website.kotlin")
     alias(libs.plugins.jetbrains.compose)
-    alias(libs.plugins.detekt)
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions {
-        allWarningsAsErrors = true
-    }
-}
-
-repositories {
-    mavenCentral()
-    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+    id("com.alexvanyo.website.detekt")
 }
 
 kotlin {
@@ -33,8 +22,4 @@ kotlin {
             }
         }
     }
-}
-
-detekt {
-    source = files("src/jsMain/kotlin")
 }

@@ -102,7 +102,6 @@ fun IndexPage(
                 flexGrow(1)
             }
         }) {
-
         }
 
         WebsiteFooter()

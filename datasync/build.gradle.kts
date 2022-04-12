@@ -1,47 +1,36 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
+    id("com.alexvanyo.website.kotlin")
     application
-    kotlin("jvm")
     alias(libs.plugins.kotlinx.serialization)
-    alias(libs.plugins.detekt)
-}
-
-tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions {
-        allWarningsAsErrors = true
-        freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
-    }
+    id("com.alexvanyo.website.detekt")
 }
 
 application {
     mainClass.set("com.alexvanyo.website.datasync.ApplicationKt")
 }
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation(projects.data)
-    implementation(libs.ktor.client.content.negotation)
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.cio)
-    implementation(libs.ktor.serialization.xml)
-}
-
-tasks {
-    val run by existing(JavaExec::class)
-    val classes by existing
-
-    val runUpdateData by registering(JavaExec::class) {
-        dependsOn(classes)
-        mainClass.set(run.get().mainClass.get())
-        classpath = run.get().classpath
-        args = listOf("$rootDir/website/src/jsMain/resources/data")
+kotlin {
+    jvm {
+        withJava()
+        compilations {
+            val main = getByName("main")
+            val runUpdateData by tasks.registering(JavaExec::class) {
+                mainClass.set("com.alexvanyo.website.datasync.ApplicationKt")
+                classpath = main.output.classesDirs
+                classpath += main.compileDependencyFiles
+                args = listOf("$rootDir/website/src/jsMain/resources/data")
+            }
+        }
     }
-}
-
-detekt {
-    source = files("src/main/kotlin")
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(projects.data)
+                implementation(libs.ktor.client.content.negotation)
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.cio)
+                implementation(libs.ktor.serialization.xml)
+            }
+        }
+    }
 }
