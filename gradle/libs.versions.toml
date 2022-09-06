@@ -1,5 +1,5 @@
 [versions]
-compose = "1.2.0-alpha01-dev774"
+compose = "1.2.0-alpha01-dev778"
 detekt = "1.21.0"
 kotlin = "1.7.10"
 kotlinx-serialization = "1.4.0"
