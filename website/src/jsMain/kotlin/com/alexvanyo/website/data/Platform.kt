@@ -18,6 +18,11 @@ val platforms = listOf(
         url = "https://github.com/alexvanyo"
     ),
     Platform(
+        name = "Mastodon",
+        icon = "img/mastodon.svg",
+        url = "https://androiddev.social/@alex_vanyo",
+    ),
+    Platform(
         name = "Twitter",
         icon = "img/twitter.svg",
         url = "https://twitter.com/alex_vanyo"
