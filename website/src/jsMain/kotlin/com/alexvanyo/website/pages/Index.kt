@@ -13,6 +13,8 @@ import com.alexvanyo.website.styles.textAlign
 import kotlinx.browser.window
 import kotlinx.coroutines.await
 import kotlinx.serialization.builtins.ListSerializer
+import org.jetbrains.compose.web.attributes.ARel
+import org.jetbrains.compose.web.attributes.ref
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
@@ -218,6 +220,7 @@ fun PlatformLink(platform: Platform) {
             style {
                 property("text-decoration", "none")
             }
+            ref(ARel.CustomARel("me"))
         }
     ) {
         Div({
