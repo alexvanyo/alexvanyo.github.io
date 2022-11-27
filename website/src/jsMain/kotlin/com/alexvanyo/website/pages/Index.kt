@@ -71,7 +71,6 @@ fun IndexPage(
             justifyContent(JustifyContent.Center)
         }
     }) {
-
         WebsiteHeader()
 
         Div({
