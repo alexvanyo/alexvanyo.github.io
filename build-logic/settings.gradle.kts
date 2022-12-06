@@ -18,4 +18,5 @@ dependencyResolutionManagement {
     }
 }
 
+rootProject.name = "alexvanyo_github_io_build-logic"
 include(":convention")
