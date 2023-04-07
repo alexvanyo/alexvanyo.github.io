@@ -17,7 +17,7 @@ kotlin {
         }
         val jsMain by getting {
             dependencies {
-                implementation(compose.web.core)
+                implementation(compose.html.core)
                 implementation(compose.runtime)
             }
         }
