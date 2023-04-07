@@ -1,4 +1,5 @@
 import com.alexvanyo.website.buildlogic.ConventionPlugin
+import org.gradle.api.JavaVersion
 import org.gradle.kotlin.dsl.withType
 
 class KotlinConventionPlugin : ConventionPlugin({
@@ -10,6 +11,7 @@ class KotlinConventionPlugin : ConventionPlugin({
         kotlinOptions {
             allWarningsAsErrors = true
             freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.RequiresOptIn"
+            jvmTarget = JavaVersion.VERSION_17.toString()
         }
     }
 })
