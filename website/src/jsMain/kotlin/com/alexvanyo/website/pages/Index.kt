@@ -8,8 +8,6 @@ import com.alexvanyo.website.data.platforms
 import com.alexvanyo.website.data.websiteJson
 import com.alexvanyo.website.models.Article
 import com.alexvanyo.website.styles.Colors
-import com.alexvanyo.website.styles.TextAlign
-import com.alexvanyo.website.styles.textAlign
 import kotlinx.browser.window
 import kotlinx.coroutines.await
 import kotlinx.serialization.builtins.ListSerializer
@@ -28,17 +26,24 @@ import org.jetbrains.compose.web.css.borderRadius
 import org.jetbrains.compose.web.css.color
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.display
+import org.jetbrains.compose.web.css.flexBasis
 import org.jetbrains.compose.web.css.flexDirection
 import org.jetbrains.compose.web.css.flexGrow
 import org.jetbrains.compose.web.css.flexShrink
 import org.jetbrains.compose.web.css.flexWrap
+import org.jetbrains.compose.web.css.gap
+import org.jetbrains.compose.web.css.gridTemplateColumns
 import org.jetbrains.compose.web.css.height
 import org.jetbrains.compose.web.css.justifyContent
+import org.jetbrains.compose.web.css.marginBottom
 import org.jetbrains.compose.web.css.marginTop
+import org.jetbrains.compose.web.css.minHeight
 import org.jetbrains.compose.web.css.padding
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.style
+import org.jetbrains.compose.web.css.textAlign
+import org.jetbrains.compose.web.css.textDecoration
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.css.width
 import org.jetbrains.compose.web.dom.A
@@ -69,7 +74,7 @@ fun IndexPage(
         style {
             display(DisplayStyle.Flex)
             flexDirection(FlexDirection.Column)
-            property("min-height", 100.vh)
+            minHeight(100.vh)
             justifyContent(JustifyContent.Center)
         }
     }) {
@@ -83,13 +88,13 @@ fun IndexPage(
         }) {
             Div({
                 style {
-                    property("flex-basis", 80.cssRem)
+                    flexBasis(80.cssRem)
                     flexGrow(0)
                     flexShrink(1)
                     padding(2.cssRem)
                     display(DisplayStyle.Grid)
                     property("grid-gap", 1.cssRem)
-                    property("grid-template-columns", "repeat(auto-fit, minmax(min(20rem, 100%), 1fr))")
+                    gridTemplateColumns("repeat(auto-fit, minmax(min(20rem, 100%), 1fr))")
                 }
             }) {
                 articles.forEach { article ->
@@ -115,7 +120,7 @@ fun WebsiteArticle(article: Article) {
         href = article.url,
         attrs = {
             style {
-                property("text-decoration", "none")
+                textDecoration("none")
             }
         }
     ) {
@@ -128,7 +133,7 @@ fun WebsiteArticle(article: Article) {
                 flexWrap(FlexWrap.Wrap)
                 flexDirection(FlexDirection.Column)
                 alignItems(AlignItems.Center)
-                property("gap", 1.cssRem)
+                gap(1.cssRem)
             }
         }) {
             Img(
@@ -147,7 +152,7 @@ fun WebsiteArticle(article: Article) {
                     color(Colors.textOnPrimary)
                     marginTop(0.px)
                     property("margin-bottom", 0.px)
-                    textAlign(TextAlign.Center)
+                    textAlign("center")
                 }
             }) {
                 Text(article.title)
@@ -161,7 +166,7 @@ fun WebsiteHeader() {
     Section({
         style {
             backgroundColor(Colors.elevatedBackground)
-            textAlign(TextAlign.Center)
+            textAlign("center")
             padding(2.cssRem)
         }
     }) {
@@ -197,13 +202,13 @@ fun WebsiteFooter() {
         style {
             backgroundColor(Colors.elevatedBackground)
             padding(2.cssRem)
-            textAlign(TextAlign.Center)
+            textAlign("center")
             display(DisplayStyle.Flex)
             flexWrap(FlexWrap.Wrap)
             flexDirection(FlexDirection.Row)
             alignItems(AlignItems.Center)
             justifyContent(JustifyContent.Center)
-            property("gap", 1.cssRem)
+            gap(1.cssRem)
         }
     }) {
         platforms.forEach { platform ->
@@ -218,7 +223,7 @@ fun PlatformLink(platform: Platform) {
         href = platform.url,
         attrs = {
             style {
-                property("text-decoration", "none")
+                textDecoration("none")
             }
             ref(ARel.CustomARel("me"))
         }
@@ -232,7 +237,7 @@ fun PlatformLink(platform: Platform) {
                 flexWrap(FlexWrap.Wrap)
                 flexDirection(FlexDirection.Row)
                 alignItems(AlignItems.Center)
-                property("gap", 1.cssRem)
+                gap(1.cssRem)
             }
         }) {
             Img(
@@ -251,7 +256,7 @@ fun PlatformLink(platform: Platform) {
                     display(DisplayStyle.Inline)
                     color(Colors.textOnPrimary)
                     marginTop(0.px)
-                    property("margin-bottom", 0.px)
+                    marginBottom(0.px)
                 }
             }) {
                 Text(platform.name)
