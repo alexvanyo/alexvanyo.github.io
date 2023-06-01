@@ -4,6 +4,10 @@ plugins {
     id("com.alexvanyo.website.detekt")
 }
 
+compose {
+    kotlinCompilerPlugin.set("androidx.compose.compiler:compiler:${libs.versions.androidxComposeCompiler.get()}")
+}
+
 kotlin {
     js(IR) {
         browser()
