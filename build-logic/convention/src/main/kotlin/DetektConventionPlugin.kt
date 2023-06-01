@@ -17,9 +17,11 @@ class DetektConventionPlugin : ConventionPlugin({
         allRules = true
         autoCorrect = System.getenv("CI") != "true"
         config.setFrom("$rootDir/config/detekt.yml")
-        source = files(
-            "src/commonMain/kotlin",
-            "src/jsMain/kotlin",
+        source.setFrom(
+            files(
+                "src/commonMain/kotlin",
+                "src/jsMain/kotlin",
+            )
         )
     }
 
