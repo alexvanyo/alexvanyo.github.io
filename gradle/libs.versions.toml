@@ -1,4 +1,5 @@
 [versions]
+androidxComposeCompiler = "1.4.7"
 compose = "1.4.0"
 detekt = "1.23.0"
 kotlin = "1.8.21"
