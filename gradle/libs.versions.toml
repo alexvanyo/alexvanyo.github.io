@@ -1,8 +1,8 @@
 [versions]
-androidxComposeCompiler = "1.4.7"
+androidxComposeCompiler = "1.4.8"
 compose = "1.4.1"
 detekt = "1.23.0"
-kotlin = "1.8.21"
+kotlin = "1.8.22"
 kotlinx-serialization = "1.5.1"
 ktor = "2.3.2"
 
