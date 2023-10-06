@@ -1,6 +1,6 @@
 [versions]
 androidxComposeCompiler = "1.5.3"
-compose = "1.5.2"
+compose = "1.5.3"
 detekt = "1.23.1"
 kotlin = "1.9.10"
 kotlinx-serialization = "1.6.0"
