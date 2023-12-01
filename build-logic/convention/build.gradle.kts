@@ -33,5 +33,9 @@ gradlePlugin {
             id = "com.alexvanyo.website.kotlin"
             implementationClass = "KotlinConventionPlugin"
         }
+        register("kotlinJvm") {
+            id = "com.alexvanyo.website.kotlinJvm"
+            implementationClass = "KotlinJvmConventionPlugin"
+        }
     }
 }

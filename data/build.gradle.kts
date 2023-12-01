@@ -1,5 +1,5 @@
 plugins {
-    id("com.alexvanyo.website.kotlin")
+    id("com.alexvanyo.website.kotlinJvm")
     alias(libs.plugins.kotlinx.serialization)
     id("com.alexvanyo.website.detekt")
 }
