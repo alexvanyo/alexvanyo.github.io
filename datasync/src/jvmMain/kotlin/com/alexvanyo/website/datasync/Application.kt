@@ -23,6 +23,7 @@ suspend fun main(args: Array<String>) {
         install(ContentNegotiation) {
             xml(
                 format = XML {
+                    @Suppress("DEPRECATION") // TODO: https://github.com/pdvrieze/xmlutil/issues/184
                     @OptIn(ExperimentalXmlUtilApi::class)
                     policy = DefaultXmlSerializationPolicy(
                         pedantic = false,
