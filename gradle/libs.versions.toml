@@ -1,10 +1,10 @@
 [versions]
-androidxComposeCompiler = "1.5.4"
 compose = "1.5.11"
 detekt = "1.23.4"
-kotlin = "1.9.20"
+kotlin = "1.9.21"
 kotlinx-serialization = "1.6.2"
 ktor = "2.3.7"
+jetbrainsComposeCompiler = "1.5.4"
 
 [libraries]
 detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
