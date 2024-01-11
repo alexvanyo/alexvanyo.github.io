@@ -5,7 +5,7 @@ plugins {
 }
 
 compose {
-    kotlinCompilerPlugin.set("androidx.compose.compiler:compiler:${libs.versions.androidxComposeCompiler.get()}")
+    kotlinCompilerPlugin.set(libs.versions.jetbrainsComposeCompiler.get())
 }
 
 kotlin {
