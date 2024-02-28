@@ -17,6 +17,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(projects.data)
+                implementation(libs.kotlinx.coroutines.core)
             }
         }
         val jsMain by getting {
