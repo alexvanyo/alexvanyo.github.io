@@ -59,7 +59,7 @@ import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun IndexPage() {
-    val articles by produceState(emptyList<Article>()) {
+    val articles by produceState(emptyList()) {
         val articlesJson = window.fetch("data/articles.json").await().text().await()
         value = websiteJson.decodeFromString(ListSerializer(Article.serializer()), articlesJson)
     }
@@ -151,7 +151,7 @@ fun WebsiteArticle(article: Article) {
                 style {
                     color(Colors.textOnPrimary)
                     marginTop(0.px)
-                    property("margin-bottom", 0.px)
+                    marginBottom(0.px)
                     textAlign("center")
                 }
             }) {
