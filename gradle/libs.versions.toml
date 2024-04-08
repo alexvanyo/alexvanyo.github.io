@@ -4,7 +4,7 @@ detekt = "1.23.6"
 kotlin = "1.9.22"
 kotlinx-coroutines = "1.8.0"
 kotlinx-serialization = "1.6.3"
-ktor = "2.3.9"
+ktor = "2.3.10"
 jetbrainsComposeCompiler = "1.5.8"
 
 [libraries]
