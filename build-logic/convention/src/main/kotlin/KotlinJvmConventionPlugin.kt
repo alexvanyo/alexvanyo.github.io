@@ -1,6 +1,6 @@
 import com.alexvanyo.website.buildlogic.ConventionPlugin
 import com.alexvanyo.website.buildlogic.configureKotlin
-import com.alexvanyo.website.buildlogic.jvmTargetVersion
+import org.gradle.api.JavaVersion
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.configure
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
@@ -17,7 +17,7 @@ class KotlinJvmConventionPlugin : ConventionPlugin({
     }
 
     extensions.configure<JavaPluginExtension> {
-        sourceCompatibility = jvmTargetVersion
-        targetCompatibility = jvmTargetVersion
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 })
