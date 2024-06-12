@@ -1,11 +1,8 @@
 plugins {
     id("com.alexvanyo.website.kotlin")
     alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.compose)
     id("com.alexvanyo.website.detekt")
-}
-
-compose {
-    kotlinCompilerPlugin.set(libs.versions.jetbrainsComposeCompiler.get())
 }
 
 kotlin {

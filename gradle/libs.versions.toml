@@ -1,11 +1,10 @@
 [versions]
-compose = "1.6.0"
+compose = "1.6.11"
 detekt = "1.23.6"
-kotlin = "1.9.23"
+kotlin = "2.0.0"
 kotlinx-coroutines = "1.8.1"
 kotlinx-serialization = "1.6.3"
 ktor = "2.3.11"
-jetbrainsComposeCompiler = "1.5.10.1"
 
 [libraries]
 detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
@@ -18,6 +17,7 @@ ktor-client-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "
 ktor-serialization-xml = { group = "io.ktor", name = "ktor-serialization-kotlinx-xml", version.ref = "ktor" }
 
 [plugins]
+compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
