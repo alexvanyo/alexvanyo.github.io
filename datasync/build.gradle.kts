@@ -1,12 +1,7 @@
 plugins {
     id("com.alexvanyo.website.kotlinJvm")
-    application
     alias(libs.plugins.kotlinx.serialization)
     id("com.alexvanyo.website.detekt")
-}
-
-application {
-    mainClass.set("com.alexvanyo.website.datasync.ApplicationKt")
 }
 
 kotlin {
