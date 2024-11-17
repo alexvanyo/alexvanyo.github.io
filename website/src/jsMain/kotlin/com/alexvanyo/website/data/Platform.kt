@@ -10,12 +10,12 @@ val platforms = listOf(
     Platform(
         name = "Medium",
         icon = "img/medium.svg",
-        url = "https://medium.com/@alexvanyo"
+        url = "https://medium.com/@alexvanyo",
     ),
     Platform(
         name = "GitHub",
         icon = "img/github.png",
-        url = "https://github.com/alexvanyo"
+        url = "https://github.com/alexvanyo",
     ),
     Platform(
         name = "Mastodon",
@@ -23,8 +23,8 @@ val platforms = listOf(
         url = "https://androiddev.social/@alex_vanyo",
     ),
     Platform(
-        name = "Twitter",
-        icon = "img/twitter.svg",
-        url = "https://twitter.com/alex_vanyo"
+        name = "Bluesky",
+        icon = "img/bluesky.svg",
+        url = "https://bsky.app/profile/vanyo.dev",
     )
 )
