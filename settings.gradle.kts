@@ -19,5 +19,6 @@ rootProject.name = "alexvanyo-website"
 include(
     ":data",
     ":website",
-    ":datasync"
+    ":datasync",
+    ":talks:configurationChanges",
 )

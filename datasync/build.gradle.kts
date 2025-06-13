@@ -6,7 +6,6 @@ plugins {
 
 kotlin {
     jvm {
-        withJava()
         compilations {
             val main = getByName("main")
             val runUpdateData by tasks.registering(JavaExec::class) {
