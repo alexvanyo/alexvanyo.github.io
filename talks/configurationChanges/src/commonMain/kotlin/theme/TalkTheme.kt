@@ -17,7 +17,9 @@ import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.
 import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.JetBrainsMono_Thin
 import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.JetBrainsMono_ThinItalic
 import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.Res
+import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.RobotoFlex
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Typography
 import androidx.compose.material.darkColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -32,10 +34,21 @@ val colors = darkColors(
     secondary = Color(0xffb1c8e9),
 )
 
+val typography
+    @Composable
+    get() = Typography(
+    defaultFontFamily = FontFamily(
+        Font(
+            resource = Res.font.RobotoFlex,
+        )
+    )
+)
+
 @Composable
 fun TalkTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colors = colors,
+        typography = typography,
     ) {
         content()
     }
