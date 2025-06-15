@@ -25,7 +25,7 @@ import dev.bnorm.storyboard.easel.template.SceneEnter
 import dev.bnorm.storyboard.easel.template.SceneExit
 import org.jetbrains.compose.resources.painterResource
 
-fun StoryboardBuilder.Scene01_TitleScene() {
+fun StoryboardBuilder.Scene99_ThankYouScene() {
     scene(
         enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),
@@ -36,12 +36,19 @@ fun StoryboardBuilder.Scene01_TitleScene() {
                 verticalArrangement = Arrangement.Center,
             ) {
                 Text(
-                    AnnotatedString("Handling configuration changes\nin Compose"),
+                    AnnotatedString("Thank you!"),
                     style = MaterialTheme.typography.h2,
                 )
                 Spacer(Modifier.height(24.dp))
                 Text(
-                    AnnotatedString("Alex Vanyo\nSoftware Engineer @ Google"),
+                    buildAnnotatedString {
+                        append("Built with ")
+                        withLink(
+                            LinkAnnotation.Url("https://github.com/bnorm/storyboard")
+                        ) {
+                            append("github.com/bnorm/storyboard")
+                        }
+                    },
                     style = MaterialTheme.typography.h4,
                 )
             }

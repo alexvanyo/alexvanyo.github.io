@@ -8,7 +8,6 @@ plugins {
 }
 
 group = "alex.vanyo.dev.talks.configurationchanges"
-version = "0.1-SNAPSHOT"
 
 kotlin {
     jvm()
