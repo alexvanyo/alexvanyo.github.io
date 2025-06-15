@@ -1,12 +1,17 @@
 import androidx.compose.ui.window.application
 import dev.bnorm.storyboard.easel.DesktopStoryEasel
+import dev.bnorm.storyboard.easel.ExperimentalStoryStateApi
+import dev.bnorm.storyboard.easel.rememberStoryState
 import theme.TalkTheme
 
+@OptIn(ExperimentalStoryStateApi::class)
 fun main() {
-    val storyboard = createStoryboard()
     application {
+        val storyState = rememberStoryState()
+        val storyboard = createStoryboard(storyState)
         TalkTheme {
-            DesktopStoryEasel(storyboard)
+            storyState.updateStoryboard(storyboard)
+            DesktopStoryEasel(storyState)
         }
     }
 }
