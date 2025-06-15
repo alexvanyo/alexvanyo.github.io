@@ -65,5 +65,6 @@ fun createStoryboard(
     Scene01_TitleScene()
     Scene02_QuestionScene()
     Scene03_DefinitionsSceneSection()
+    Scene10_TierListScene()
     Scene99_ThankYouScene()
 }

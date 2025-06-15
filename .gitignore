@@ -52,3 +52,6 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,gradle,intellij
 
 .kotlin
+
+# Storyboard local state
+.storyboard
