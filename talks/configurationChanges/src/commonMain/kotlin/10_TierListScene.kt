@@ -74,6 +74,7 @@ import components.visible
 import dev.bnorm.storyboard.Render
 import dev.bnorm.storyboard.SceneScope
 import dev.bnorm.storyboard.StoryboardBuilder
+import dev.bnorm.storyboard.easel.assist.SceneCaption
 import dev.bnorm.storyboard.easel.rememberSharedContentState
 import dev.bnorm.storyboard.easel.sharedElement
 import dev.bnorm.storyboard.easel.template.SceneEnter
@@ -97,8 +98,12 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                overlay = {
                    Column {
                        ConfigurationChangeTypePill(Touchscreen)
-                       Text("Whether or not the window is controlled via a touch screen")
-                       Text("Changes when the physical display changes (like with connected displays)")
+                       Text("\u2022\tWhether or not the window is controlled via a touch screen")
+                       Text("\u2022\tChanges when the physical display changes (like with connected displays)")
+                   }
+
+                   SceneCaption {
+                       Text("Safe")
                    }
                },
            ),
@@ -120,8 +125,12 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                            ConfigurationChangeTypePill(Keyboard)
                            ConfigurationChangeTypePill(KeyboardHidden)
                        }
-                       Text("The type of physical keyboard attached (if any), and its physical state")
-                       Text("Changes if a keyboard is attached or detached, perhaps wirelessly, or if the device posture changes")
+                       Text("\u2022\tThe type of physical keyboard attached (if any), and its physical state")
+                       Text("\u2022\tChanges if a keyboard is attached or detached, perhaps wirelessly, or if the device posture changes")
+                   }
+
+                   SceneCaption {
+                       Text("Safe")
                    }
                },
            ),
@@ -142,8 +151,12 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                overlay = {
                    Column {
                        ConfigurationChangeTypePill(Locale)
-                       Text("The current language and region")
-                       Text("Changes when the user changes languages")
+                       Text("\u2022\tThe current language and region")
+                       Text("\u2022\tChanges when the user changes languages")
+                   }
+
+                   SceneCaption {
+                       Text("Fairly risky")
                    }
                },
            ),
@@ -172,27 +185,31 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                            ConfigurationChangeTypePill(Mnc)
                        }
                        Text(
-                           "The current IMSI Mobile Country Code and Mobile Network Code",
+                           "\u2022\tThe current IMSI Mobile Country Code and Mobile Network Code",
                            Modifier.sharedElement(rememberSharedContentState("overlayMccText1")),
                        )
                        Text(
-                           "Changes when the cellular network in use changes",
+                           "\u2022\tChanges when the cellular network in use changes",
                            Modifier.sharedElement(rememberSharedContentState("overlayMccText2")),
                        )
                        Box {
                            Text(
-                               "Changes don't cause Activity recreation unless opting in with android:recreateOnConfigChanges",
+                               "\u2022\tChanges don't cause Activity recreation unless opting in with android:recreateOnConfigChanges",
                                Modifier.visible(false),
                            )
                            androidx.compose.animation.AnimatedVisibility(
                                false,
                            ) {
                                Text(
-                                   "Changes don't cause Activity recreation unless opting in with android:recreateOnConfigChanges",
+                                   "\u2022\tChanges don't cause Activity recreation unless opting in with android:recreateOnConfigChanges",
                                    Modifier.sharedElement(rememberSharedContentState("overlayMccText3")),
                                )
                            }
                        }
+                   }
+
+                   SceneCaption {
+                       Text("Extra safe")
                    }
                },
            ),
@@ -212,11 +229,11 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                            ConfigurationChangeTypePill(Mnc)
                        }
                        Text(
-                           "The current IMSI Mobile Country Code and Mobile Network Code",
+                           "\u2022\tThe current IMSI Mobile Country Code and Mobile Network Code",
                            Modifier.sharedElement(rememberSharedContentState("overlayMccText1")),
                        )
                        Text(
-                           "Changes when the cellular network in use changes",
+                           "\u2022\tChanges when the cellular network in use changes",
                            Modifier.sharedElement(rememberSharedContentState("overlayMccText2")),
                        )
                        val transitionState = remember { MutableTransitionState(false).apply { targetState = true } }
@@ -227,10 +244,14 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                            exit = fadeOut(),
                        ) {
                            Text(
-                               "Changes don't cause Activity recreation unless opting in with android:recreateOnConfigChanges",
+                               "\u2022\tChanges don't cause Activity recreation unless opting in with android:recreateOnConfigChanges",
                                Modifier.sharedElement(rememberSharedContentState("overlayMccText3")),
                            )
                        }
+                   }
+
+                   SceneCaption {
+                       Text("Extra safe")
                    }
                },
            ),
@@ -257,7 +278,11 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                overlay = {
                    Column {
                        ConfigurationChangeTypePill(Navigation)
-                       Text("TODO")
+                       Text("\u2022\tThe physical navigation type (trackballs, d-pad, wheel, or none)")
+                   }
+
+                   SceneCaption {
+                       Text("Safe")
                    }
                },
            ),
@@ -286,7 +311,14 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                overlay = {
                    Column {
                        ConfigurationChangeTypePill(UiMode)
-                       Text("TODO")
+                       Text("\u2022\tA combination of two things:")
+                       Text("\t\t\u2023\tThe theme, dark mode or light mode")
+                       Text("\t\t\u2023\tThe general \"ui mode\" - normal, TV, watch, desk, car, etc.")
+                       Text("\u2022\tChanges when the theme switches (can be automatic based on time-of-day), or the user changes modes (docks a device, or enters a desktop mode)")
+                   }
+
+                   SceneCaption {
+                       Text("Somewhat safe")
                    }
                },
            ),
@@ -313,6 +345,45 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                    Mnc,
                    Navigation,
                    UiMode,
+               ),
+               overlay = {
+                   Column {
+                       ConfigurationChangeTypePill(FontScale)
+                       Text("\u2022\tThe factor to adjust text sizing by")
+                       Text("\u2022\tNon-linear since Android 15 - don't just multiply to convert SP to DP anymore")
+                       Text("\u2022\tChanges when the user changes font size in accessibility")
+                   }
+
+                   SceneCaption {
+                       Text("Somewhat safe")
+                   }
+               },
+           ),
+           TierListSceneState(
+               setOf(
+                   Locale,
+                   Touchscreen,
+                   Keyboard,
+                   KeyboardHidden,
+                   Mcc,
+                   Mnc,
+                   Navigation,
+                   UiMode,
+                   FontScale,
+               ),
+               overlay = null,
+           ),
+           TierListSceneState(
+               setOf(
+                   Locale,
+                   Touchscreen,
+                   Keyboard,
+                   KeyboardHidden,
+                   Mcc,
+                   Mnc,
+                   Navigation,
+                   UiMode,
+                   FontScale,
                ),
                overlay = {
                    Column {
@@ -326,14 +397,19 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                        }
                        Text(
                            buildAnnotatedString {
+                               append("\u2022\t")
                                withStyle(SpanStyle(textDecoration = TextDecoration.LineThrough)) {
                                    append("Screen")
                                }
                                append(" Window size, layout and and orientation")
                            }
                        )
-                       Text("Changes when the window is resized, which could be from multi-window modes," +
-                               " device rotation, ")
+                       Text("\u2022\tChanges when the window is resized, which could be from multi-window modes," +
+                               " device rotation, folding/unfolding, switching displays, or density changes")
+                   }
+
+                   SceneCaption {
+                       Text("Somewhat safe")
                    }
                },
            ),
@@ -347,6 +423,7 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                    Mnc,
                    Navigation,
                    UiMode,
+                   FontScale,
                    ScreenLayout,
                    ScreenSize,
                    Orientation,
@@ -364,6 +441,7 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                    Mnc,
                    Navigation,
                    UiMode,
+                   FontScale,
                    ScreenLayout,
                    ScreenSize,
                    Orientation,
@@ -372,7 +450,12 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                overlay = {
                    Column {
                        ConfigurationChangeTypePill(Density)
-                       Text("TODO")
+                       Text("\u2022\tThe density of the window - the multiplier to convert from dp to px")
+                       Text("\u2022\tChanges when the density of the display changes, or the app switches displays")
+                   }
+
+                   SceneCaption {
+                       Text("Riskiest")
                    }
                },
            ),
@@ -386,6 +469,7 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                    Mnc,
                    Navigation,
                    UiMode,
+                   FontScale,
                    ScreenLayout,
                    ScreenSize,
                    Orientation,
@@ -404,6 +488,7 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                    Mnc,
                    Navigation,
                    UiMode,
+                   FontScale,
                    ScreenLayout,
                    ScreenSize,
                    Orientation,
@@ -412,8 +497,13 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                ),
                overlay = {
                    Column {
-                       ConfigurationChangeTypePill(LayoutDirection)
-                       Text("TODO")
+                       ConfigurationChangeTypePill(FontWeightAdjustment)
+                       Text("\u2022\tAn adjustment to the weight of a font")
+                       Text("\u2022\tChanges when the font weight is changed in accessibility settings")
+                   }
+
+                   SceneCaption {
+                       Text("Somewhat safe")
                    }
                },
            ),
@@ -427,11 +517,63 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                    Mnc,
                    Navigation,
                    UiMode,
+                   FontScale,
                    ScreenLayout,
                    ScreenSize,
                    Orientation,
                    SmallestScreenSize,
                    Density,
+                   FontWeightAdjustment,
+               ),
+               overlay = null,
+           ),
+           TierListSceneState(
+               setOf(
+                   Locale,
+                   Touchscreen,
+                   Keyboard,
+                   KeyboardHidden,
+                   Mcc,
+                   Mnc,
+                   Navigation,
+                   UiMode,
+                   FontScale,
+                   ScreenLayout,
+                   ScreenSize,
+                   Orientation,
+                   SmallestScreenSize,
+                   Density,
+                   FontWeightAdjustment,
+               ),
+               overlay = {
+                   Column {
+                       ConfigurationChangeTypePill(LayoutDirection)
+                       Text("\u2022\tThe layout direction of the window: left-to-right or right-to-left")
+                       Text("\u2022\tChanges when the locale changes")
+                   }
+
+                   SceneCaption {
+                       Text("Fairly risky")
+                   }
+               },
+           ),
+           TierListSceneState(
+               setOf(
+                   Locale,
+                   Touchscreen,
+                   Keyboard,
+                   KeyboardHidden,
+                   Mcc,
+                   Mnc,
+                   Navigation,
+                   UiMode,
+                   FontScale,
+                   ScreenLayout,
+                   ScreenSize,
+                   Orientation,
+                   SmallestScreenSize,
+                   Density,
+                   FontWeightAdjustment,
                    LayoutDirection,
                ),
                overlay = null,
@@ -446,17 +588,24 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                    Mnc,
                    Navigation,
                    UiMode,
+                   FontScale,
                    ScreenLayout,
                    ScreenSize,
                    Orientation,
                    SmallestScreenSize,
                    Density,
+                   FontWeightAdjustment,
                    LayoutDirection,
                ),
                overlay = {
                    Column {
                        ConfigurationChangeTypePill(ColorMode)
-                       Text("TODO")
+                       Text("\u2022\tThe color mode capabilities of the window: wide gamut and/or HDR")
+                       Text("\u2022\tChanges when the display changes")
+                   }
+
+                   SceneCaption {
+                       Text("Safe")
                    }
                },
            ),
@@ -470,11 +619,13 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                    Mnc,
                    Navigation,
                    UiMode,
+                   FontScale,
                    ScreenLayout,
                    ScreenSize,
                    Orientation,
                    SmallestScreenSize,
                    Density,
+                   FontWeightAdjustment,
                    LayoutDirection,
                    ColorMode,
                ),
@@ -490,18 +641,25 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                    Mnc,
                    Navigation,
                    UiMode,
+                   FontScale,
                    ScreenLayout,
                    ScreenSize,
                    Orientation,
                    SmallestScreenSize,
                    Density,
+                   FontWeightAdjustment,
                    LayoutDirection,
                    ColorMode,
                ),
                overlay = {
                    Column {
                        ConfigurationChangeTypePill(GrammaticalGender)
-                       Text("TODO")
+                       Text("\u2022\tThe user's grammatical gender")
+                       Text("\u2022\tChanges when requested by the user or application, such as if the user account changes")
+                   }
+
+                   SceneCaption {
+                       Text("Fairly risky")
                    }
                },
            ),
@@ -515,11 +673,13 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                    Mnc,
                    Navigation,
                    UiMode,
+                   FontScale,
                    ScreenLayout,
                    ScreenSize,
                    Orientation,
                    SmallestScreenSize,
                    Density,
+                   FontWeightAdjustment,
                    LayoutDirection,
                    ColorMode,
                    GrammaticalGender,
@@ -536,11 +696,13 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                    Mnc,
                    Navigation,
                    UiMode,
+                   FontScale,
                    ScreenLayout,
                    ScreenSize,
                    Orientation,
                    SmallestScreenSize,
                    Density,
+                   FontWeightAdjustment,
                    LayoutDirection,
                    ColorMode,
                    GrammaticalGender,
@@ -548,7 +710,14 @@ fun StoryboardBuilder.Scene10_TierListScene() {
                overlay = {
                    Column {
                        ConfigurationChangeTypePill(AssetsPaths)
-                       Text("TODO")
+                       Text("")
+                       Text("\u2022\tChanges when the assets paths change... like if the background wallpaper changes")
+                       Text("\u2022\tThis configuration change has existed since Android 12 (API 31), but the constant was made public in Android 16 (API 36)")
+                       Text("\u2022\tOpting out of recreation will opt-out of recreation for it all the way back to Android 12")
+                   }
+
+                   SceneCaption {
+                       Text("Safe")
                    }
                },
            ),
@@ -797,21 +966,21 @@ enum class ConfigurationChangeType(
 ) {
     Density(4),
     Locale(3),
-    GrammaticalGender(3),
     LayoutDirection(3),
+    GrammaticalGender(3),
+    UiMode(2),
+    FontScale(2),
     ScreenSize(2),
     SmallestScreenSize(2),
     ScreenLayout(2),
     Orientation(2),
-    FontScale(2),
     FontWeightAdjustment(2),
-    UiMode(2),
     Touchscreen(1),
     Keyboard(1),
     KeyboardHidden(1),
-    AssetsPaths(1),
     Navigation(1),
     ColorMode(1),
+    AssetsPaths(1),
     Mcc(0),
     Mnc(0)
 }
