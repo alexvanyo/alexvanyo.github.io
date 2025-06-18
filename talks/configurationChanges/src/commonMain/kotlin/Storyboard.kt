@@ -4,6 +4,9 @@ import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ProvidableCompositionLocal
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
@@ -31,40 +34,52 @@ fun createStoryboard(
             Color(0xFFF4B400),
             Color(0xFF0F9D58),
         )
-        Surface {
-            val borderColor by animateColorAsState(
-                borderColors[storyState.targetIndex.sceneIndex.mod(borderColors.size)],
-                animationSpec = spring(stiffness = Spring.StiffnessLow)
-            )
-            Box(
-                Modifier.drawWithContent {
-                    val borderPath = Path().apply {
-                        addRoundRect(
-                            RoundRect(
-                                size.toRect().deflate(8.dp.toPx()),
-                                cornerRadius = CornerRadius(8.dp.toPx()),
+        val highlightColor by animateColorAsState(
+            borderColors[storyState.targetIndex.sceneIndex.mod(borderColors.size)],
+            animationSpec = spring(stiffness = Spring.StiffnessLow)
+        )
+        CompositionLocalProvider(LocalHighlightColor provides { highlightColor }) {
+            Surface {
+                Box(
+                    Modifier.drawWithContent {
+                        val borderPath = Path().apply {
+                            addRoundRect(
+                                RoundRect(
+                                    size.toRect().deflate(8.dp.toPx()),
+                                    cornerRadius = CornerRadius(8.dp.toPx()),
+                                )
                             )
-                        )
-                    }
+                        }
 
-                    clipPath(borderPath) {
-                        this@drawWithContent.drawContent()
-                    }
-                    drawPath(
-                        path = borderPath,
-                        color = borderColor,
-                        style = Stroke(width = 4.dp.toPx()),
-                    )
-                }.fillMaxSize()
-            ) {
-                content()
+                        clipPath(borderPath) {
+                            this@drawWithContent.drawContent()
+                        }
+                        drawPath(
+                            path = borderPath,
+                            color = highlightColor,
+                            style = Stroke(width = 4.dp.toPx()),
+                        )
+                    }.fillMaxSize()
+                ) {
+                    content()
+                }
             }
         }
     },
 ) {
     Scene01_TitleScene()
     Scene02_QuestionScene()
-    Scene03_DefinitionsSceneSection()
+    Scene03_DefinitionsScene()
+    Scene04_WhyScene1()
+    Scene05_ArchitectureGoalsScene()
+    Scene06_WhyScene2()
+    Scene07_ResourcesScene()
+    Scene08_DefinitionsScene2()
+    Scene09_AndroidConfigChanges()
     Scene10_TierListScene()
     Scene99_ThankYouScene()
+}
+
+val LocalHighlightColor: ProvidableCompositionLocal<() -> Color> = compositionLocalOf {
+    error("highlightColor not set")
 }
