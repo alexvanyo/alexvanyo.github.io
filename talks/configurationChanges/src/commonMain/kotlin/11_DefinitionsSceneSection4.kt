@@ -15,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import components.Arrow
-import components.Line
 import components.LineCanvas
 import components.LayoutCoordinatesHolder
 import components.layoutCoordinates
@@ -65,20 +64,13 @@ fun StoryboardBuilder.Scene11_DefinitionsScene4() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.Start,
                 ) {
-                    Column(
-                        Modifier
+                    Text(
+                        "Activity Recreation",
+                        style = MaterialTheme.typography.h4,
+                        modifier = Modifier
                             .layoutCoordinates(recreationLayoutCoordinatesHolder)
                             .padding(16.dp)
-                    ) {
-                        Text(
-                            "Activity",
-                            style = MaterialTheme.typography.h4,
-                        )
-                        Text(
-                            "Recreation",
-                            style = MaterialTheme.typography.h4,
-                        )
-                    }
+                    )
 
                     Spacer(Modifier.height(64.dp))
 
