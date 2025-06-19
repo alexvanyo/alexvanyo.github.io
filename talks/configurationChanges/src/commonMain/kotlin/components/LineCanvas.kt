@@ -159,10 +159,7 @@ fun Arrow(
         size = lineEndSize,
         color = color,
     ),
-    tail: LineEnd? = LineEnd.Triangle(
-        size = lineEndSize,
-        color = color,
-    ),
+    tail: LineEnd? = null,
     lineWidth: Dp = 2.dp,
 ): Line = Line(
     start = start,
