@@ -1,19 +1,14 @@
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.AnimatedVisibilityScope
-import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.animation.core.ExperimentalTransitionApi
 import androidx.compose.animation.core.createChildTransition
-import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.expandIn
-import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -30,7 +25,6 @@ import dev.bnorm.storyboard.StoryboardBuilder
 import dev.bnorm.storyboard.easel.template.SceneEnter
 import dev.bnorm.storyboard.easel.template.SceneExit
 import dev.bnorm.storyboard.toState
-import theme.jetBrainsMono
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 fun StoryboardBuilder.Scene08_DefinitionsScene2() {
@@ -39,14 +33,14 @@ fun StoryboardBuilder.Scene08_DefinitionsScene2() {
         enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),
     ) {
-        DefinitionsSceneContent()
+        DefinitionsScene2Content()
     }
 }
 
 context(_: AnimatedVisibilityScope, scope: SharedTransitionScope)
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class, ExperimentalAnimationApi::class)
 @Composable
-private fun SceneScope<Int>.DefinitionsSceneContent() {
+private fun SceneScope<Int>.DefinitionsScene2Content() {
     val state = transition.createChildTransition { it.toState() }
 
     Row(
@@ -79,7 +73,7 @@ private fun SceneScope<Int>.DefinitionsSceneContent() {
                 exit = ExitTransition.None
             ) {
                 Text(
-                    "by default, optionally",
+                    "by default*",
                     fontStyle = FontStyle.Italic,
                     style = MaterialTheme.typography.h4,
                     modifier = Modifier.padding(horizontal = 16.dp)
