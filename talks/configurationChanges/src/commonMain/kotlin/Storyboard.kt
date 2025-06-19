@@ -69,14 +69,17 @@ fun createStoryboard(
 ) {
     Scene01_TitleScene()
     Scene02_QuestionScene()
-    Scene03_DefinitionsScene()
+    Scene03_DefinitionsScene1()
     Scene04_WhyScene1()
     Scene05_ArchitectureGoalsScene()
     Scene06_WhyScene2()
     Scene07_ResourcesScene()
     Scene08_DefinitionsScene2()
     Scene09_AndroidConfigChanges()
-    Scene10_TierListScene()
+    Scene10_DefinitionsScene3()
+    Scene11_DefinitionsScene4()
+    Scene30_TierListScene()
+    Scene98_ConclusionScene()
     Scene99_ThankYouScene()
 }
 

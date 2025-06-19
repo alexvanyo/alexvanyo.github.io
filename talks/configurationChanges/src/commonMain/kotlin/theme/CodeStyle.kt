@@ -4,6 +4,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontStyle
 import dev.bnorm.storyboard.text.highlight.CodeStyle
+import dev.bnorm.storyboard.text.highlight.XmlHighlighting
 
 val INTELLIJ_DARK_CODE_STYLE = CodeStyle.build {
     simple += SpanStyle(color = Color(0xFFBCBEC4))
@@ -19,4 +20,12 @@ val INTELLIJ_DARK_CODE_STYLE = CodeStyle.build {
     extensionFunctionCall = simple + SpanStyle(color = Color(0xFF56A8F5), fontStyle = FontStyle.Italic)
     staticFunctionCall = simple + SpanStyle(fontStyle = FontStyle.Italic)
     typeParameters = simple + SpanStyle(color = Color(0xFF16BAAC))
+}
+
+val INTELLIJ_DARK_CODE_XML_HIGHLIGHTING = XmlHighlighting.build {
+    attributeName = SpanStyle(color = Color(0xFFBCBEC4))
+    attributeValue = SpanStyle(color = Color(0xFF6AAB73))
+    comment = SpanStyle(color = Color(0xFF7A7E85))
+    tag = SpanStyle(color = Color(0xFFD5B778))
+    tagName = SpanStyle(color = Color(0xFFD5B778))
 }

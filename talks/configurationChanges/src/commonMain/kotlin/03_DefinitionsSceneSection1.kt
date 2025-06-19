@@ -32,20 +32,20 @@ import dev.bnorm.storyboard.toState
 import theme.jetBrainsMono
 
 @OptIn(ExperimentalSharedTransitionApi::class)
-fun StoryboardBuilder.Scene03_DefinitionsScene() {
+fun StoryboardBuilder.Scene03_DefinitionsScene1() {
     scene(
         stateCount = 7,
         enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),
     ) {
-        DefinitionsSceneContent()
+        DefinitionsScene1Content()
     }
 }
 
 context(_: AnimatedVisibilityScope, scope: SharedTransitionScope)
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class, ExperimentalAnimationApi::class)
 @Composable
-private fun SceneScope<Int>.DefinitionsSceneContent() {
+private fun SceneScope<Int>.DefinitionsScene1Content() {
     val state = transition.createChildTransition { it.toState() }
 
     Row(
