@@ -26,7 +26,7 @@ import dev.bnorm.storyboard.easel.template.SceneExit
 import dev.bnorm.storyboard.toState
 
 @OptIn(ExperimentalTransitionApi::class)
-fun StoryboardBuilder.Scene12_ItsComposeScene() {
+fun StoryboardBuilder.Scene13_ItsComposeScene() {
     scene(
         4,
         enterTransition = SceneEnter(Alignment.CenterEnd),
