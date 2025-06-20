@@ -2,6 +2,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.core.ExperimentalTransitionApi
 import androidx.compose.animation.core.createChildTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
@@ -136,6 +137,23 @@ fun StoryboardBuilder.Scene21_Example5_AnchoredDraggable() {
                 "    modifier.layout { measurable, constraints ->\n",
                 "        val placeable = measurable.measure(constraints)\n",
                 "        val dragEndPoint = placeable.width - 32.dp.toPx()\n",
+                "        val newAnchors = DraggableAnchors {", "\n",
+                "            Anchors.Start at 0f\n",
+                "            Anchors.Center at dragEndPoint * .5f\n",
+                "            Anchors.End at dragEndPoint\n",
+                "       ", " }", "\n",
+                "        state.updateAnchors(", "newAnchors = newAnchors" , ")", "\n",
+                "        layout(placeable.width, placeable.height) {\n",
+                "            placeable.placeRelative(0, 0)\n",
+                "        }\n",
+                "    },\n",
+                ") ", "{", " ", "Spacer(", "/* ... */", ")", " ", "}",
+            ).highlight(kotlinHighlighting),
+            listOf(
+                "Box", "(", "\n",
+                "    modifier.layout { measurable, constraints ->\n",
+                "        val placeable = measurable.measure(constraints)\n",
+                "        val dragEndPoint = placeable.width - 32.dp.toPx()\n",
                 "        val newAnchors = DraggableAnchors {", " /* ... */", " }", "\n",
                 "        state.updateAnchors(", "\n",
                 "            ", "newAnchors = newAnchors", ",", "\n",
@@ -195,22 +213,22 @@ fun StoryboardBuilder.Scene21_Example5_AnchoredDraggable() {
             indexTransition.AnimatedVisibility(
                 visible = { it == 5 },
                 modifier = Modifier.align(Alignment.BottomCenter),
-                enter = fadeIn(),
+                enter = fadeIn(tween(durationMillis = 220, delayMillis = 400)),
                 exit = fadeOut(),
             ) {
                 ResizableBox {
-                    AnchoredDraggableDemoIncorrect(modifier = Modifier.fillMaxSize())
+                    AnchoredDraggableDemo(modifier = Modifier.fillMaxSize(), isCorrect = false)
                 }
             }
 
             indexTransition.AnimatedVisibility(
-                visible = { it == 7 },
+                visible = { it == 9 },
                 modifier = Modifier.align(Alignment.BottomCenter),
-                enter = fadeIn(),
+                enter = fadeIn(tween(durationMillis = 220, delayMillis = 400)),
                 exit = fadeOut(),
             ) {
                 ResizableBox {
-                    AnchoredDraggableDemoCorrect(modifier = Modifier.fillMaxSize())
+                    AnchoredDraggableDemo(modifier = Modifier.fillMaxSize(), isCorrect = true)
                 }
             }
         }
