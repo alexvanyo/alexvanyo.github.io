@@ -30,7 +30,7 @@ fun StoryboardBuilder.Scene13_ItsComposeScene() {
     scene(
         4,
         enterTransition = SceneEnter(Alignment.CenterEnd),
-        exitTransition = SceneExit(Alignment.CenterStart),
+        exitTransition = SceneExit(Alignment.CenterEnd),
     ) {
         val state = transition.createChildTransition { it.toState() }
 
