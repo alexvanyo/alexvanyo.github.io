@@ -24,7 +24,7 @@ import dev.bnorm.storyboard.easel.template.SceneExit
 import theme.jetBrainsMono
 
 @OptIn(ExperimentalSharedTransitionApi::class)
-fun StoryboardBuilder.Scene11_DefinitionsScene4() {
+fun StoryboardBuilder.Scene10_DefinitionsScene4() {
     scene(
         enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),

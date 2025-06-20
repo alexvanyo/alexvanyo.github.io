@@ -1,3 +1,4 @@
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExitTransition
@@ -8,7 +9,10 @@ import androidx.compose.animation.core.ExperimentalTransitionApi
 import androidx.compose.animation.core.createChildTransition
 import androidx.compose.animation.expandIn
 import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkOut
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,20 +26,27 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import dev.bnorm.storyboard.SceneScope
 import dev.bnorm.storyboard.StoryboardBuilder
+import dev.bnorm.storyboard.easel.rememberSharedContentState
+import dev.bnorm.storyboard.easel.sharedElement
 import dev.bnorm.storyboard.easel.template.SceneEnter
 import dev.bnorm.storyboard.easel.template.SceneExit
 import dev.bnorm.storyboard.toState
+import theme.jetBrainsMono
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 fun StoryboardBuilder.Scene08_DefinitionsScene2() {
     scene(
-        stateCount = 2,
+        stateCount = 3,
         enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),
     ) {
         DefinitionsScene2Content()
     }
 }
+
+private val changesSharedElementKey = Any()
+private val configurationSharedElementKey = Any()
+private val activityRecreationSharedElementKey = Any()
 
 context(_: AnimatedVisibilityScope, scope: SharedTransitionScope)
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class, ExperimentalAnimationApi::class)
@@ -48,19 +59,58 @@ private fun SceneScope<Int>.DefinitionsScene2Content() {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
     ) {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(16.dp),
+        state.AnimatedContent(
+            contentAlignment = Alignment.CenterStart,
         ) {
-            Text(
-                "Configuration",
-                style = MaterialTheme.typography.h4,
-            )
-            Text(
-                "Changes",
-                style = MaterialTheme.typography.h4,
-            )
+            when (it) {
+                0, 1 -> {
+                    Column(
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.padding(16.dp),
+                    ) {
+                        Text(
+                            "Configuration",
+                            style = MaterialTheme.typography.h4,
+                            modifier = Modifier.sharedElement(rememberSharedContentState(configurationSharedElementKey)),
+                        )
+                        Text(
+                            "Changes",
+                            style = MaterialTheme.typography.h4,
+                            modifier = Modifier.sharedElement(rememberSharedContentState(changesSharedElementKey)),
+                        )
+                    }
+                }
+                else -> {
+                    Column(
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.padding(16.dp),
+                    ) {
+                        Text(
+                            "Configuration",
+                            style = MaterialTheme.typography.h4,
+                            modifier = Modifier.sharedElement(rememberSharedContentState(configurationSharedElementKey)),
+                        )
+                        Text(
+                            "Changes",
+                            style = MaterialTheme.typography.h4,
+                            modifier = Modifier.sharedElement(rememberSharedContentState(changesSharedElementKey)),
+                        )
+                        Text(
+                            "with",
+                            style = MaterialTheme.typography.h4,
+                            modifier = Modifier.padding(horizontal = 16.dp)
+                        )
+                        Text(
+                            "android:configChanges",
+                            style = MaterialTheme.typography.h5,
+                            fontFamily = jetBrainsMono,
+                            modifier = Modifier.padding(horizontal = 16.dp)
+                        )
+                    }
+                }
+            }
         }
 
         Column(
@@ -68,9 +118,9 @@ private fun SceneScope<Int>.DefinitionsScene2Content() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             state.AnimatedVisibility(
-                visible = { it >= 1 },
+                visible = { it == 1 },
                 enter = fadeIn() + expandIn(expandFrom = Alignment.BottomCenter),
-                exit = ExitTransition.None
+                exit = fadeOut() + shrinkOut(shrinkTowards = Alignment.BottomCenter),
             ) {
                 Text(
                     "by default*",
@@ -87,19 +137,42 @@ private fun SceneScope<Int>.DefinitionsScene2Content() {
             )
         }
 
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
+        Box(
+            contentAlignment = Alignment.Center,
             modifier = Modifier.padding(16.dp),
         ) {
-            Text(
-                "Activity",
-                style = MaterialTheme.typography.h4,
-            )
-            Text(
-                "Recreation",
-                style = MaterialTheme.typography.h4,
-            )
+            state.AnimatedContent(
+                contentAlignment = Alignment.CenterStart,
+            ) {
+                when (it) {
+                    0, 1 -> {
+                        Column(
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier
+                                .padding(16.dp)
+                                .sharedElement(rememberSharedContentState(activityRecreationSharedElementKey)),
+                        ) {
+                            Text(
+                                "Activity",
+                                style = MaterialTheme.typography.h4,
+                            )
+                            Text(
+                                "Recreation",
+                                style = MaterialTheme.typography.h4,
+                            )
+                        }
+                    }
+                    else -> {
+                        Text(
+                            "onConfigurationChanged",
+                            style = MaterialTheme.typography.h5,
+                            fontFamily = jetBrainsMono,
+                            modifier = Modifier.padding(horizontal = 16.dp)
+                        )
+                    }
+                }
+            }
         }
     }
 }

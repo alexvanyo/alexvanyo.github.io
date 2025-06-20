@@ -61,7 +61,7 @@ fun StoryboardBuilder.Scene07_ResourcesScene() {
                 exit = ExitTransition.None,
             ) {
                 Text(
-                    "So we can throw the whole Activity away\n and recreate the entire UI",
+                    "So we can throw the whole Activity away\nand recreate the entire UI",
                     style = MaterialTheme.typography.h4,
                 )
             }
