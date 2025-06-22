@@ -35,8 +35,6 @@ fun StoryboardBuilder.Scene16_SnapshotStateBackedConfigurationLocals() {
         enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),
     ) {
-        val state = transition.createChildTransition { it.toState() }
-
         Column(
             modifier = Modifier.padding(32.dp).fillMaxSize(),
         ) {
