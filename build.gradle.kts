@@ -10,7 +10,7 @@ tasks.register<Sync>("site") {
     }
 
     into("talks") {
-        into("configurationChanges") {
+        into("configurationchanges") {
             from(project(":talks:configurationChanges").tasks.named("wasmJsBrowserDistribution"))
         }
     }
