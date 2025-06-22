@@ -1,6 +1,5 @@
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.window.CanvasBasedWindow
-import dev.bnorm.storyboard.LocalStoryboard
 import dev.bnorm.storyboard.easel.ExperimentalStoryStateApi
 import dev.bnorm.storyboard.easel.WebStoryEasel
 import dev.bnorm.storyboard.easel.rememberStoryState

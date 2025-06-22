@@ -15,6 +15,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.builtins.ListSerializer
 import nl.adaptivity.xmlutil.ExperimentalXmlUtilApi
 import nl.adaptivity.xmlutil.serialization.DefaultXmlSerializationPolicy
+import nl.adaptivity.xmlutil.serialization.UnknownChildHandler
 import nl.adaptivity.xmlutil.serialization.XML
 import java.io.File
 
@@ -23,13 +24,12 @@ suspend fun main(args: Array<String>) {
         install(ContentNegotiation) {
             xml(
                 format = XML {
-                    @Suppress("DEPRECATION") // TODO: https://github.com/pdvrieze/xmlutil/issues/184
                     @OptIn(ExperimentalXmlUtilApi::class)
-                    policy = DefaultXmlSerializationPolicy(
-                        pedantic = false,
-                        autoPolymorphic = true,
-                        unknownChildHandler = { _, _, _, _, _ -> emptyList() },
-                    )
+                    policy = DefaultXmlSerializationPolicy.Builder().apply {
+                        pedantic = false
+                        autoPolymorphic = true
+                        unknownChildHandler = UnknownChildHandler { _, _, _, _, _ -> emptyList() }
+                    }.build()
                 },
                 contentType = ContentType.Text.Xml
             )
