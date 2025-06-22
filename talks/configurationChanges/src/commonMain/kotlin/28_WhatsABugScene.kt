@@ -7,10 +7,14 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import dev.bnorm.storyboard.StoryboardBuilder
 import dev.bnorm.storyboard.easel.template.SceneEnter
 import dev.bnorm.storyboard.easel.template.SceneExit
+import theme.notoColorEmoji
 
 @OptIn(ExperimentalTransitionApi::class)
 fun StoryboardBuilder.Scene28_WhatsABugScene() {
@@ -24,7 +28,12 @@ fun StoryboardBuilder.Scene28_WhatsABugScene() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
-                "If Compose itself, or a Compose library,\nexpects recreation to happen to function correctly,\nthat's a bug \uD83D\uDC1B",
+                buildAnnotatedString {
+                    append("If Compose itself, or a Compose library,\nexpects recreation to happen to function correctly,\nthat's a bug ")
+                    withStyle(SpanStyle(fontFamily = notoColorEmoji)) {
+                        append("\uD83D\uDC1B")
+                    }
+                },
                 style = MaterialTheme.typography.h4,
             )
         }

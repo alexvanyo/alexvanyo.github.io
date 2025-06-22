@@ -16,6 +16,7 @@ import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.
 import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.JetBrainsMono_SemiBoldItalic
 import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.JetBrainsMono_Thin
 import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.JetBrainsMono_ThinItalic
+import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.NotoColorEmoji
 import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.Res
 import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.RobotoFlex
 import androidx.compose.material.MaterialTheme
@@ -37,12 +38,12 @@ val colors = darkColors(
 val typography
     @Composable
     get() = Typography(
-    defaultFontFamily = FontFamily(
-        Font(
-            resource = Res.font.RobotoFlex,
+        defaultFontFamily = FontFamily(
+            Font(
+                resource = Res.font.RobotoFlex,
+            )
         )
     )
-)
 
 @Composable
 fun TalkTheme(content: @Composable () -> Unit) {
@@ -53,6 +54,10 @@ fun TalkTheme(content: @Composable () -> Unit) {
         content()
     }
 }
+
+val notoColorEmoji
+    @Composable
+    get() = FontFamily(Font(Res.font.NotoColorEmoji))
 
 val jetBrainsMono
     @Composable
