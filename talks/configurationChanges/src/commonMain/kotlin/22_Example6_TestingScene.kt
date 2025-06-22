@@ -38,6 +38,19 @@ fun StoryboardBuilder.Scene21_Example5_AnchoredDraggable() {
                 "        }\n",
                 "    }\n",
                 "    // check for English\n",
+                "}"
+            ).highlight(kotlinHighlighting),
+            listOf(
+                "runComposeUiTest {\n",
+                "    var locales by mutableStateOf(LocaleList(\"en-US\"))\n",
+                "    setContent {\n",
+                "        DeviceConfigurationOverride(\n",
+                "            DeviceConfigurationOverride.Locales(locales),\n",
+                "        ) {\n",
+                "            MyApp()\n",
+                "        }\n",
+                "    }\n",
+                "    // check for English\n",
                 "    locales = LocaleList(\"es-US\")\n",
                 "    // check for Spanish\n",
                 "}"
@@ -53,7 +66,7 @@ fun StoryboardBuilder.Scene21_Example5_AnchoredDraggable() {
             ProvideTextStyle(TextStyle(fontFamily = jetBrainsMono)) {
                 Box(
                     modifier = Modifier
-                        .align(Alignment.TopCenter)
+                        .align(Alignment.TopStart)
                         .animateContentSize(
                             clip = false,
                         )

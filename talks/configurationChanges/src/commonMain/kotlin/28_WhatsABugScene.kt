@@ -13,7 +13,7 @@ import dev.bnorm.storyboard.easel.template.SceneEnter
 import dev.bnorm.storyboard.easel.template.SceneExit
 
 @OptIn(ExperimentalTransitionApi::class)
-fun StoryboardBuilder.Scene26_WhatsABugScene() {
+fun StoryboardBuilder.Scene28_WhatsABugScene() {
     scene(
         enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),
@@ -24,7 +24,7 @@ fun StoryboardBuilder.Scene26_WhatsABugScene() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
-                "If Compose itself, or a Compose library, expects recreation to happen to function correctly, that's a bug",
+                "If Compose itself, or a Compose library,\nexpects recreation to happen to function correctly,\nthat's a bug \uD83D\uDC1B",
                 style = MaterialTheme.typography.h4,
             )
         }
