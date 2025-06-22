@@ -59,7 +59,7 @@ import theme.jetBrainsMono
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class)
-fun StoryboardBuilder.Scene21_Example5_AnchoredDraggable() {
+fun StoryboardBuilder.Scene22_Example6_TestingScene() {
     val kotlinHighlighting = INTELLIJ_DARK_CODE_STYLE
     scene(
         states = listOf(
@@ -235,7 +235,7 @@ fun StoryboardBuilder.Scene21_Example5_AnchoredDraggable() {
     }
 }
 
-enum class Anchors { Start, Center, End }
+private enum class Anchors { Start, Center, End }
 
 @Composable
 private fun ResizableBox(
