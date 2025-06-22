@@ -1,11 +1,19 @@
 [versions]
+#compose
 compose = "1.8.1"
+#detekt
 detekt = "1.23.8"
+#jetbrainsCompose
 jetbrainsCompose = "1.8.1"
+#kotlin
 kotlin = "2.2.0-RC2"
+#kotlinx-coroutines
 kotlinx-coroutines = "1.10.2"
+#kotlinx-serialization
 kotlinx-serialization = "1.8.1"
+#ktor
 ktor = "3.2.0"
+#storyboard
 storyboard = "0.1.0-alpha03"
 
 [libraries]
