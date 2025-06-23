@@ -13,7 +13,7 @@ import dev.bnorm.storyboard.easel.template.SceneExit
 @OptIn(ExperimentalTransitionApi::class)
 fun StoryboardBuilder.Scene23_WhyCareScene() {
     scene(
-        enterTransition = SceneEnter(Alignment.CenterStart),
+        enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),
     ) {
         Column(

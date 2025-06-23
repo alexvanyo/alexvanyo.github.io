@@ -59,7 +59,7 @@ import theme.jetBrainsMono
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class)
-fun StoryboardBuilder.Scene22_Example6_TestingScene() {
+fun StoryboardBuilder.Scene21_Example5_AnchoredDraggable() {
     val kotlinHighlighting = INTELLIJ_DARK_CODE_STYLE
     scene(
         states = listOf(

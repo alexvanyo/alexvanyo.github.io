@@ -26,7 +26,7 @@ import theme.jetBrainsMono
 @OptIn(ExperimentalTransitionApi::class)
 fun StoryboardBuilder.Scene24_AvoidStateLossScene() {
     scene(
-        5,
+        6,
         enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),
     ) {
@@ -84,6 +84,17 @@ fun StoryboardBuilder.Scene24_AvoidStateLossScene() {
                     Text(
                         buildAnnotatedString {
                             append("\u2022\tSolves an entire class of bugs for some configuration changes like keyboard")
+                        },
+                        style = MaterialTheme.typography.h5,
+                    )
+                }
+                state.AnimatedVisibility(
+                    visible = { it >= 5 },
+                    enter = expandVertically(expandFrom = Alignment.Top),
+                ) {
+                    Text(
+                        buildAnnotatedString {
+                            append("\u2022\tDoesn't make saved instance state or ViewModels obsolete, just less critical")
                         },
                         style = MaterialTheme.typography.h5,
                     )

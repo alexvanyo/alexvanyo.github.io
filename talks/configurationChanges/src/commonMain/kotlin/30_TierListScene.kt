@@ -336,7 +336,7 @@ fun StoryboardBuilder.Scene30_TierListScene() {
                    Column {
                        ConfigurationChangeTypePill(FontScale)
                        Text("\u2022\tThe factor to adjust text sizing by")
-                       Text("\u2022\tNon-linear since Android 15 - don't just multiply to convert SP to DP anymore")
+                       Text("\u2022\tNon-linear since Android 15 - don't just multiply to convert sp to dp anymore")
                        Text("\u2022\tChanges when the user changes font size in accessibility")
                    }
 
