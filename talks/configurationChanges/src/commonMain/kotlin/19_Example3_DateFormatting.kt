@@ -68,7 +68,7 @@ fun StoryboardBuilder.Scene19_Example3_DateFormatting() {
                 "        DateTimeFormatter.ofPattern(", "\n",
                 "            ", "pattern", ",\n",
                 "            ConfigurationCompat.getLocales(configuration).get(0)\n",
-                "        )\n",
+                "        ", ")\n",
                 "    }\n",
                 "    Text(dateTimeFormatter.format(localDate))\n",
                 "}"

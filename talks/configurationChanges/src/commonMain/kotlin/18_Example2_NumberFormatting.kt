@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ProvideTextStyle
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
@@ -23,6 +24,7 @@ import dev.bnorm.storyboard.text.magic.MagicText
 import dev.bnorm.storyboard.toState
 import theme.INTELLIJ_DARK_CODE_STYLE
 import theme.jetBrainsMono
+import kotlin.time.Duration
 
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class)
 fun StoryboardBuilder.Scene18_Example2_NumberFormatting() {
@@ -32,14 +34,14 @@ fun StoryboardBuilder.Scene18_Example2_NumberFormatting() {
             listOf(
                 "@Composable\n",
                 "fun Duration.formatToSecondsRoundedDownToNearestTenth(): String =\n",
-                "    \"%.1f\"", ".format(", "inWholeMilliseconds / 100", ")"
+                "    \"%.1f\"", ".format(", "(inWholeMilliseconds / 100) / 10.0", ")"
             ).highlight(kotlinHighlighting),
             listOf(
                 "@Composable\n",
                 "fun Duration.formatToSecondsRoundedDownToNearestTenth(): String =\n",
                 "    \"%.1f\"", ".format(", "\n",
                 "        java.util.Locale.getDefault()", ", ", "\n",
-                "        ", "inWholeMilliseconds / 100", "\n",
+                "        ", "(inWholeMilliseconds / 100) / 10.0", "\n",
                 "    ", ")"
             ).highlight(kotlinHighlighting),
             listOf(
@@ -47,7 +49,7 @@ fun StoryboardBuilder.Scene18_Example2_NumberFormatting() {
                 "fun Duration.formatToSecondsRoundedDownToNearestTenth(): String =\n",
                 "    \"%.1f\"", ".format(", "\n",
                 "        androidx.compose.ui.text.intl.Locale.current", ", ", "\n",
-                "        ", "inWholeMilliseconds / 100", "\n",
+                "        ", "(inWholeMilliseconds / 100) / 10.0", "\n",
                 "    ", ")"
             ).highlight(kotlinHighlighting),
             listOf(
@@ -55,7 +57,7 @@ fun StoryboardBuilder.Scene18_Example2_NumberFormatting() {
                 "fun Duration.formatToSecondsRoundedDownToNearestTenth(): String =\n",
                 "    \"%.1f\"", ".format(", "\n",
                 "        ConfigurationCompat.getLocales(LocalConfiguration.current).get(0),\n",
-                "        ", "inWholeMilliseconds / 100", "\n",
+                "        ", "(inWholeMilliseconds / 100) / 10.0", "\n",
                 "    ", ")"
             ).highlight(kotlinHighlighting),
         ),
