@@ -142,7 +142,7 @@ fun StoryboardBuilder.Scene30_TierListScene() {
                    }
 
                    SceneCaption {
-                       Text("Fairly risky")
+                       Text("Riskiest")
                    }
                },
            ),
@@ -441,7 +441,7 @@ fun StoryboardBuilder.Scene30_TierListScene() {
                    }
 
                    SceneCaption {
-                       Text("Riskiest")
+                       Text("Fairly risky")
                    }
                },
            ),
@@ -539,7 +539,7 @@ fun StoryboardBuilder.Scene30_TierListScene() {
                    }
 
                    SceneCaption {
-                       Text("Fairly risky")
+                       Text("Riskiest")
                    }
                },
            ),
@@ -645,7 +645,7 @@ fun StoryboardBuilder.Scene30_TierListScene() {
                    }
 
                    SceneCaption {
-                       Text("Fairly risky")
+                       Text("Riskiest")
                    }
                },
            ),
@@ -950,10 +950,10 @@ private fun ConfigurationChangeTypePill(
 enum class ConfigurationChangeType(
     val risk: Int,
 ) {
-    Density(4),
-    Locale(3),
-    LayoutDirection(3),
-    GrammaticalGender(3),
+    Locale(4),
+    LayoutDirection(4),
+    GrammaticalGender(4),
+    Density(3),
     UiMode(2),
     FontScale(2),
     ScreenSize(2),
