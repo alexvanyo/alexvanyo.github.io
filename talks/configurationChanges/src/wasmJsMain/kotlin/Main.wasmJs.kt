@@ -1,3 +1,6 @@
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.window.CanvasBasedWindow
 import dev.bnorm.storyboard.easel.ExperimentalStoryStateApi
@@ -12,11 +15,13 @@ fun main() {
     val element = document.getElementById("ComposeTarget") as HTMLCanvasElement
     element.focus() // Focus is required for keyboard navigation.
     CanvasBasedWindow(canvasElementId = element.id, title = "Handling configuration changes in Compose") {
-        val storyState = rememberStoryState()
-        val storyboard = createStoryboard(storyState)
         TalkTheme {
-            storyState.updateStoryboard(storyboard)
-            WebStoryEasel(storyState)
+            key(isSystemInDarkTheme()) {
+                val storyState = rememberStoryState()
+                val storyboard = createStoryboard(storyState)
+                storyState.updateStoryboard(storyboard)
+                WebStoryEasel(storyState)
+            }
         }
     }
 }

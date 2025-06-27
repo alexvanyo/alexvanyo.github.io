@@ -170,7 +170,7 @@ fun Arrow(
     lineEnd = head?.content,
     drawBody = {
         drawLine(
-            color = Color.White,
+            color = color,
             start = Offset.Zero + if (tail == null) {
                 Offset.Zero
             } else {

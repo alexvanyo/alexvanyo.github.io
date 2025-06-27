@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import dev.bnorm.storyboard.StoryboardBuilder
 import dev.bnorm.storyboard.easel.template.SceneEnter
 import dev.bnorm.storyboard.easel.template.SceneExit
-import theme.notoColorEmoji
+import theme.LocalEmojiFontFamily
 
 @OptIn(ExperimentalTransitionApi::class)
 fun StoryboardBuilder.Scene28_WhatsABugScene() {
@@ -30,7 +30,7 @@ fun StoryboardBuilder.Scene28_WhatsABugScene() {
             Text(
                 buildAnnotatedString {
                     append("If Compose itself, or a Compose library,\nexpects recreation to happen to function correctly,\nthat's a bug ")
-                    withStyle(SpanStyle(fontFamily = notoColorEmoji)) {
+                    withStyle(SpanStyle(fontFamily = LocalEmojiFontFamily.current)) {
                         append("\uD83D\uDC1B")
                     }
                 },

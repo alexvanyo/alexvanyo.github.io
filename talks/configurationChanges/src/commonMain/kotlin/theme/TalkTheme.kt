@@ -19,17 +19,27 @@ import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.
 import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.NotoColorEmoji
 import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.Res
 import alex.vanyo.dev.talks.configurationchanges.configurationchanges.generated.resources.RobotoFlex
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Typography
 import androidx.compose.material.darkColors
+import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import org.jetbrains.compose.resources.Font
 
-val colors = darkColors(
+val darkColors = darkColors(
+    background = Color.Black,
+    primary = Color(0xffffff9d),
+    secondary = Color(0xffb1c8e9),
+)
+
+val lightColors = lightColors(
     background = Color.Black,
     primary = Color(0xffffff9d),
     secondary = Color(0xffb1c8e9),
@@ -45,13 +55,26 @@ val typography
         )
     )
 
+val LocalEmojiFontFamily = compositionLocalOf<FontFamily> { error("") }
+val LocalCodeStyle = compositionLocalOf { INTELLIJ_DARK_CODE_STYLE }
+val LocalXmlHighlighting = compositionLocalOf { INTELLIJ_DARK_CODE_XML_HIGHLIGHTING }
+
 @Composable
-fun TalkTheme(content: @Composable () -> Unit) {
+fun TalkTheme(
+    isSystemInDarkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
     MaterialTheme(
-        colors = colors,
+        colors = if (isSystemInDarkTheme) darkColors else lightColors,
         typography = typography,
     ) {
-        content()
+        CompositionLocalProvider(
+            LocalCodeStyle provides if (isSystemInDarkTheme) INTELLIJ_DARK_CODE_STYLE else INTELLIJ_LIGHT_CODE_STYLE,
+            LocalXmlHighlighting provides if (isSystemInDarkTheme) INTELLIJ_DARK_CODE_XML_HIGHLIGHTING else INTELLIJ_LIGHT_CODE_XML_HIGHLIGHTING,
+            LocalEmojiFontFamily provides notoColorEmoji,
+        ) {
+            content()
+        }
     }
 }
 
