@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ProvideTextStyle
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
@@ -20,11 +21,14 @@ import dev.bnorm.storyboard.text.highlight.highlight
 import dev.bnorm.storyboard.text.magic.MagicText
 import dev.bnorm.storyboard.toState
 import theme.INTELLIJ_DARK_CODE_STYLE
+import theme.INTELLIJ_LIGHT_CODE_STYLE
+import theme.LocalCodeStyle
 import theme.jetBrainsMono
 
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class)
-fun StoryboardBuilder.Scene22_Example6_TestingScene() {
-    val kotlinHighlighting = INTELLIJ_DARK_CODE_STYLE
+fun StoryboardBuilder.Scene22_Example6_TestingScene(
+    kotlinHighlighting: CodeStyle,
+) {
     scene(
         states = listOf(
             listOf(

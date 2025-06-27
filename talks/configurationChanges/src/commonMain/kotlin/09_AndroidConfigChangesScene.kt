@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
@@ -26,15 +27,19 @@ import dev.bnorm.storyboard.StoryboardBuilder
 import dev.bnorm.storyboard.easel.template.SceneEnter
 import dev.bnorm.storyboard.easel.template.SceneExit
 import dev.bnorm.storyboard.text.highlight.Highlighting
+import dev.bnorm.storyboard.text.highlight.XmlHighlighting
 import dev.bnorm.storyboard.text.highlight.style
 import dev.bnorm.storyboard.text.magic.MagicText
 import dev.bnorm.storyboard.toState
 import theme.INTELLIJ_DARK_CODE_XML_HIGHLIGHTING
+import theme.INTELLIJ_LIGHT_CODE_XML_HIGHLIGHTING
+import theme.LocalXmlHighlighting
 import theme.jetBrainsMono
 
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class)
-fun StoryboardBuilder.Scene09_AndroidConfigChangesScene() {
-    val xmlHighlighting = INTELLIJ_DARK_CODE_XML_HIGHLIGHTING
+fun StoryboardBuilder.Scene09_AndroidConfigChangesScene(
+    xmlHighlighting: XmlHighlighting,
+) {
     scene(
         states = listOf(
             AndroidConfigChangesSceneState(

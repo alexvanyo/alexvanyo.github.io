@@ -900,7 +900,7 @@ private fun RiskLabel(
                 3 -> "Fairly risky"
                 else -> "Riskiest"
             },
-            color = MaterialTheme.colors.onPrimary,
+            color = Color.Black,
         )
     }
 }

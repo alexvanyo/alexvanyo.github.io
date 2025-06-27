@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
@@ -34,11 +35,14 @@ import dev.bnorm.storyboard.text.magic.MagicText
 import dev.bnorm.storyboard.toState
 import theme.INTELLIJ_DARK_CODE_STYLE
 import theme.INTELLIJ_DARK_CODE_XML_HIGHLIGHTING
+import theme.INTELLIJ_LIGHT_CODE_STYLE
+import theme.LocalCodeStyle
 import theme.jetBrainsMono
 
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class)
-fun StoryboardBuilder.Scene14_ComposeViewImpl() {
-    val kotlinHighlighting = INTELLIJ_DARK_CODE_STYLE
+fun StoryboardBuilder.Scene14_ComposeViewImpl(
+    kotlinHighlighting: CodeStyle,
+) {
     scene(
         states = listOf(
             ComposeViewImplSceneState(

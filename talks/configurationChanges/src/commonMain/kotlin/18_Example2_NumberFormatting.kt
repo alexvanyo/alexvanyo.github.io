@@ -23,12 +23,15 @@ import dev.bnorm.storyboard.text.highlight.highlight
 import dev.bnorm.storyboard.text.magic.MagicText
 import dev.bnorm.storyboard.toState
 import theme.INTELLIJ_DARK_CODE_STYLE
+import theme.INTELLIJ_LIGHT_CODE_STYLE
+import theme.LocalCodeStyle
 import theme.jetBrainsMono
 import kotlin.time.Duration
 
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class)
-fun StoryboardBuilder.Scene18_Example2_NumberFormatting() {
-    val kotlinHighlighting = INTELLIJ_DARK_CODE_STYLE
+fun StoryboardBuilder.Scene18_Example2_NumberFormatting(
+    kotlinHighlighting: CodeStyle,
+) {
     scene(
         states = listOf(
             listOf(
