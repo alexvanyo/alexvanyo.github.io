@@ -1,20 +1,22 @@
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.window.CanvasBasedWindow
+import androidx.compose.ui.window.ComposeViewport
 import dev.bnorm.storyboard.easel.ExperimentalStoryStateApi
 import dev.bnorm.storyboard.easel.WebStoryEasel
 import dev.bnorm.storyboard.easel.rememberStoryState
 import kotlinx.browser.document
-import org.w3c.dom.HTMLCanvasElement
+import org.w3c.dom.HTMLElement
 import theme.TalkTheme
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalStoryStateApi::class)
 fun main() {
-    val element = document.getElementById("ComposeTarget") as HTMLCanvasElement
+    val element = document.getElementById("composeApp") as HTMLElement
+    element.title = "Handling configuration changes in Compose"
     element.focus() // Focus is required for keyboard navigation.
-    CanvasBasedWindow(canvasElementId = element.id, title = "Handling configuration changes in Compose") {
+    ComposeViewport(
+        viewportContainer = element,
+    ) {
         TalkTheme {
             key(isSystemInDarkTheme()) {
                 val storyState = rememberStoryState()
