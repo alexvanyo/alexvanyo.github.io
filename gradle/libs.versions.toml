@@ -10,7 +10,7 @@ kotlinx-coroutines = "1.10.2"
 #kotlinx-serialization
 kotlinx-serialization = "1.9.0"
 #ktor
-ktor = "3.3.1"
+ktor = "3.3.2"
 #storyboard
 storyboard = "0.1.0-alpha03"
 
