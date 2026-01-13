@@ -2,7 +2,7 @@
 #detekt
 detekt = "1.23.8"
 #jetbrainsCompose
-jetbrainsCompose = "1.9.3"
+jetbrainsCompose = "1.10.0"
 #kotlin
 kotlin = "2.3.0"
 #kotlinx-coroutines
