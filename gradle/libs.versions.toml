@@ -8,7 +8,7 @@ kotlin = "2.3.0"
 #kotlinx-coroutines
 kotlinx-coroutines = "1.10.2"
 #kotlinx-serialization
-kotlinx-serialization = "1.9.0"
+kotlinx-serialization = "1.10.0"
 #ktor
 ktor = "3.4.0"
 #storyboard
