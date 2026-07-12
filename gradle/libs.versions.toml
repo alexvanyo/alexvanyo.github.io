@@ -4,7 +4,7 @@ detekt = "1.23.8"
 #jetbrainsCompose
 jetbrainsCompose = "1.9.3"
 #kotlin
-kotlin = "2.3.21"
+kotlin = "2.4.0"
 #kotlinx-coroutines
 kotlinx-coroutines = "1.11.0"
 #kotlinx-serialization
