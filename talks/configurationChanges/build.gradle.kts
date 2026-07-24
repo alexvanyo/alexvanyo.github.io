@@ -36,14 +36,6 @@ kotlin {
     }
 }
 
-extensions.configure<KotlinMultiplatformExtension> {
-    sourceSets.all {
-        languageSettings {
-            enableLanguageFeature("ContextParameters")
-        }
-    }
-}
-
 compose {
     resources.publicResClass = true
     desktop.application.mainClass = "Main_desktopkt"
