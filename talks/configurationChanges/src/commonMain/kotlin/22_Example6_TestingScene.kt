@@ -13,13 +13,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import components.animateContentSize
 import dev.bnorm.storyboard.StoryboardBuilder
-import dev.bnorm.storyboard.easel.template.SceneEnter
-import dev.bnorm.storyboard.easel.template.SceneExit
+import dev.bnorm.storyboard.layout.template.SceneEnter
+import dev.bnorm.storyboard.layout.template.SceneExit
 import dev.bnorm.storyboard.text.highlight.CodeStyle
 import dev.bnorm.storyboard.text.highlight.Language
 import dev.bnorm.storyboard.text.highlight.highlight
 import dev.bnorm.storyboard.text.magic.MagicText
-import dev.bnorm.storyboard.toState
+import dev.bnorm.storyboard.toValue
 import theme.INTELLIJ_DARK_CODE_STYLE
 import theme.INTELLIJ_LIGHT_CODE_STYLE
 import theme.LocalCodeStyle
@@ -30,7 +30,7 @@ fun StoryboardBuilder.Scene22_Example6_TestingScene(
     kotlinHighlighting: CodeStyle,
 ) {
     scene(
-        states = listOf(
+        frames = listOf(
             listOf(
                 "runComposeUiTest {\n",
                 "    var locales by mutableStateOf(LocaleList(\"en-US\"))\n",
@@ -66,7 +66,7 @@ fun StoryboardBuilder.Scene22_Example6_TestingScene(
         Box(
             modifier = Modifier.fillMaxSize().padding(64.dp),
         ) {
-            val kotlinCodeTransition = transition.createChildTransition { it.toState() }
+            val kotlinCodeTransition = transition.createChildTransition { it.toValue() }
             ProvideTextStyle(TextStyle(fontFamily = jetBrainsMono)) {
                 Box(
                     modifier = Modifier

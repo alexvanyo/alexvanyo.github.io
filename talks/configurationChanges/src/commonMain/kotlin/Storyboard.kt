@@ -10,6 +10,7 @@ import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.CornerRadius
@@ -20,31 +21,32 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.unit.dp
-import dev.bnorm.storyboard.SceneDecorator
+import dev.bnorm.storyboard.ContentDecorator
 import dev.bnorm.storyboard.Storyboard
-import dev.bnorm.storyboard.easel.StoryState
 import theme.LocalCodeStyle
 import theme.LocalXmlHighlighting
 
+// Google Blue, Red, Yellow and Green
+private val BORDER_COLORS = listOf(
+    Color(0xFF4285F4),
+    Color(0xFFDB4437),
+    Color(0xFFF4B400),
+    Color(0xFF0F9D58),
+)
+
 @Composable
 fun createStoryboard(
-    storyState: StoryState,
+    targetSceneIndex: () -> Int,
 ): Storyboard {
     val xmlHighlighting = LocalXmlHighlighting.current
     val kotlinHighlighting = LocalCodeStyle.current
+    val currentTargetSceneIndex by rememberUpdatedState(targetSceneIndex)
     return remember(xmlHighlighting, kotlinHighlighting) {
         Storyboard.build(
             title = "Handling configuration changes in Compose",
-            decorator = SceneDecorator { content ->
-                // Google Blue, Red, Yellow and Green
-                val borderColors = listOf(
-                    Color(0xFF4285F4),
-                    Color(0xFFDB4437),
-                    Color(0xFFF4B400),
-                    Color(0xFF0F9D58),
-                )
+            decorator = ContentDecorator { content ->
                 val highlightColor by animateColorAsState(
-                    borderColors[storyState.targetIndex.sceneIndex.mod(borderColors.size)],
+                    BORDER_COLORS[currentTargetSceneIndex().mod(BORDER_COLORS.size)],
                     animationSpec = spring(stiffness = Spring.StiffnessLow)
                 )
                 CompositionLocalProvider(LocalHighlightColor provides { highlightColor }) {

@@ -14,18 +14,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.bnorm.storyboard.StoryboardBuilder
-import dev.bnorm.storyboard.easel.template.SceneEnter
-import dev.bnorm.storyboard.easel.template.SceneExit
-import dev.bnorm.storyboard.toState
+import dev.bnorm.storyboard.layout.template.SceneEnter
+import dev.bnorm.storyboard.layout.template.SceneExit
+import dev.bnorm.storyboard.toValue
 
 @OptIn(ExperimentalTransitionApi::class)
 fun StoryboardBuilder.Scene07_ResourcesScene() {
     scene(
-        stateCount = 5,
+        frameCount = 5,
         enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),
     ) {
-        val state = transition.createChildTransition { it.toState() }
+        val state = transition.createChildTransition { it.toValue() }
 
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),

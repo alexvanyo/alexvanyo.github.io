@@ -1,7 +1,5 @@
 package templates
 
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,15 +12,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
-import dev.bnorm.storyboard.AdvanceDirection
+import dev.bnorm.storyboard.SceneEnterTransition
+import dev.bnorm.storyboard.SceneExitTransition
 import dev.bnorm.storyboard.StoryboardBuilder
-import dev.bnorm.storyboard.easel.template.SceneEnter
-import dev.bnorm.storyboard.easel.template.SceneExit
+import dev.bnorm.storyboard.layout.template.SceneEnter
+import dev.bnorm.storyboard.layout.template.SceneExit
 
 fun StoryboardBuilder.HeaderBodySceneTemplate(
     header: AnnotatedString,
-    enterTransition: (AdvanceDirection) -> EnterTransition = SceneEnter(Alignment.CenterEnd),
-    exitTransition: (AdvanceDirection) -> ExitTransition = SceneExit(Alignment.CenterEnd),
+    enterTransition: SceneEnterTransition = SceneEnter(Alignment.CenterEnd),
+    exitTransition: SceneExitTransition = SceneExit(Alignment.CenterEnd),
     body: @Composable () -> Unit,
 ) {
     scene(

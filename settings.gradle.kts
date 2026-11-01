@@ -16,6 +16,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "alexvanyo-website"
 
+includeBuild("storyboard")
+
 include(
     ":data",
     ":website",

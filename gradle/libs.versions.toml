@@ -2,7 +2,7 @@
 #detekt
 detekt = "1.23.8"
 #jetbrainsCompose
-jetbrainsCompose = "1.9.3"
+jetbrainsCompose = "1.10.1"
 #kotlin
 kotlin = "2.4.21"
 #kotlinx-coroutines
@@ -12,7 +12,7 @@ kotlinx-serialization = "1.12.0"
 #ktor
 ktor = "3.6.1"
 #storyboard
-storyboard = "0.1.0-alpha03"
+storyboard = "0.1.0-SNAPSHOT"
 
 [libraries]
 detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
@@ -26,6 +26,7 @@ ktor-client-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "
 ktor-serialization-xml = { group = "io.ktor", name = "ktor-serialization-kotlinx-xml", version.ref = "ktor" }
 storyboard-core = { group = "dev.bnorm.storyboard", name = "storyboard", version.ref = "storyboard" }
 storyboard-easel = { group = "dev.bnorm.storyboard", name = "storyboard-easel", version.ref = "storyboard" }
+storyboard-layout = { group = "dev.bnorm.storyboard", name = "storyboard-layout", version.ref = "storyboard" }
 storyboard-text = { group = "dev.bnorm.storyboard", name = "storyboard-text", version.ref = "storyboard" }
 
 [plugins]

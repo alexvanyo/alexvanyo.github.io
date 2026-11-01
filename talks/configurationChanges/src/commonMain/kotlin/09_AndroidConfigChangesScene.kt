@@ -24,13 +24,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import components.animateContentSize
 import dev.bnorm.storyboard.StoryboardBuilder
-import dev.bnorm.storyboard.easel.template.SceneEnter
-import dev.bnorm.storyboard.easel.template.SceneExit
+import dev.bnorm.storyboard.layout.template.SceneEnter
+import dev.bnorm.storyboard.layout.template.SceneExit
 import dev.bnorm.storyboard.text.highlight.Highlighting
 import dev.bnorm.storyboard.text.highlight.XmlHighlighting
 import dev.bnorm.storyboard.text.highlight.style
 import dev.bnorm.storyboard.text.magic.MagicText
-import dev.bnorm.storyboard.toState
+import dev.bnorm.storyboard.toValue
 import theme.INTELLIJ_DARK_CODE_XML_HIGHLIGHTING
 import theme.INTELLIJ_LIGHT_CODE_XML_HIGHLIGHTING
 import theme.LocalXmlHighlighting
@@ -41,7 +41,7 @@ fun StoryboardBuilder.Scene09_AndroidConfigChangesScene(
     xmlHighlighting: XmlHighlighting,
 ) {
     scene(
-        states = listOf(
+        frames = listOf(
             AndroidConfigChangesSceneState(
                 header = null,
                 xmlCode = listOf(
@@ -219,7 +219,7 @@ fun StoryboardBuilder.Scene09_AndroidConfigChangesScene(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.Center,
         ) {
-            val headerTransition = transition.createChildTransition { it.toState().header }
+            val headerTransition = transition.createChildTransition { it.toValue().header }
             headerTransition.AnimatedContent(
                 modifier = Modifier.fillMaxWidth(),
                 transitionSpec = {
@@ -238,7 +238,7 @@ fun StoryboardBuilder.Scene09_AndroidConfigChangesScene(
                 }
             }
 
-            val xmlCodeTransition = transition.createChildTransition { it.toState().xmlCode }
+            val xmlCodeTransition = transition.createChildTransition { it.toValue().xmlCode }
             ProvideTextStyle(TextStyle(fontFamily = jetBrainsMono)) {
                 Box(
                     modifier = Modifier.animateContentSize(
