@@ -5,8 +5,8 @@ import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import dev.bnorm.storyboard.StoryboardBuilder
-import dev.bnorm.storyboard.easel.template.SceneEnter
-import dev.bnorm.storyboard.easel.template.SceneExit
+import dev.bnorm.storyboard.layout.template.SceneEnter
+import dev.bnorm.storyboard.layout.template.SceneExit
 
 fun StoryboardBuilder.Scene04_WhyScene1() {
     scene(

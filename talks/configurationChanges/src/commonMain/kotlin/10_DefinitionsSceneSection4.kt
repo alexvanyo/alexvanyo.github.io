@@ -19,8 +19,8 @@ import components.LineCanvas
 import components.LayoutCoordinatesHolder
 import components.layoutCoordinates
 import dev.bnorm.storyboard.StoryboardBuilder
-import dev.bnorm.storyboard.easel.template.SceneEnter
-import dev.bnorm.storyboard.easel.template.SceneExit
+import dev.bnorm.storyboard.layout.template.SceneEnter
+import dev.bnorm.storyboard.layout.template.SceneExit
 import theme.jetBrainsMono
 
 @OptIn(ExperimentalSharedTransitionApi::class)

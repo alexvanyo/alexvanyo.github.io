@@ -1,20 +1,29 @@
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.window.application
-import dev.bnorm.storyboard.easel.DesktopStoryEasel
-import dev.bnorm.storyboard.easel.ExperimentalStoryStateApi
-import dev.bnorm.storyboard.easel.rememberStoryState
+import dev.bnorm.storyboard.easel.Animatic
+import dev.bnorm.storyboard.easel.DesktopEasel
+import dev.bnorm.storyboard.easel.rememberAnimatic
 import theme.TalkTheme
 
-@OptIn(ExperimentalStoryStateApi::class)
 fun main() {
     application {
         TalkTheme {
             key(isSystemInDarkTheme()) {
-                val storyState = rememberStoryState()
-                val storyboard = createStoryboard(storyState)
-                storyState.updateStoryboard(storyboard)
-                DesktopStoryEasel(storyState)
+                var animatic: Animatic? by remember { mutableStateOf(null) }
+                val storyboard = createStoryboard(
+                    targetSceneIndex = { animatic?.targetIndex?.sceneIndex ?: 0 }
+                )
+                val currentAnimatic = rememberAnimatic("configurationChanges") { storyboard }
+                SideEffect {
+                    animatic = currentAnimatic
+                }
+                DesktopEasel(currentAnimatic)
             }
         }
     }

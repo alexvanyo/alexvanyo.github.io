@@ -26,15 +26,15 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import dev.bnorm.storyboard.SceneScope
 import dev.bnorm.storyboard.StoryboardBuilder
-import dev.bnorm.storyboard.easel.template.SceneEnter
-import dev.bnorm.storyboard.easel.template.SceneExit
-import dev.bnorm.storyboard.toState
+import dev.bnorm.storyboard.layout.template.SceneEnter
+import dev.bnorm.storyboard.layout.template.SceneExit
+import dev.bnorm.storyboard.toValue
 import theme.jetBrainsMono
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 fun StoryboardBuilder.Scene03_DefinitionsScene1() {
     scene(
-        stateCount = 7,
+        frameCount = 7,
         enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),
     ) {
@@ -46,7 +46,7 @@ context(_: AnimatedVisibilityScope, scope: SharedTransitionScope)
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class, ExperimentalAnimationApi::class)
 @Composable
 private fun SceneScope<Int>.DefinitionsScene1Content() {
-    val state = transition.createChildTransition { it.toState() }
+    val state = transition.createChildTransition { it.toValue() }
 
     Row(
         Modifier.fillMaxSize(),

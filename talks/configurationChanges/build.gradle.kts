@@ -23,6 +23,7 @@ kotlin {
             dependencies {
                 implementation(libs.storyboard.core)
                 implementation(libs.storyboard.easel)
+                implementation(libs.storyboard.layout)
                 implementation(libs.storyboard.text)
                 implementation(libs.jetbrains.compose.material)
                 implementation(compose.components.resources)

@@ -28,15 +28,15 @@ import dev.bnorm.storyboard.SceneScope
 import dev.bnorm.storyboard.StoryboardBuilder
 import dev.bnorm.storyboard.easel.rememberSharedContentState
 import dev.bnorm.storyboard.easel.sharedElement
-import dev.bnorm.storyboard.easel.template.SceneEnter
-import dev.bnorm.storyboard.easel.template.SceneExit
-import dev.bnorm.storyboard.toState
+import dev.bnorm.storyboard.layout.template.SceneEnter
+import dev.bnorm.storyboard.layout.template.SceneExit
+import dev.bnorm.storyboard.toValue
 import theme.jetBrainsMono
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 fun StoryboardBuilder.Scene08_DefinitionsScene2() {
     scene(
-        stateCount = 3,
+        frameCount = 3,
         enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),
     ) {
@@ -52,7 +52,7 @@ context(_: AnimatedVisibilityScope, scope: SharedTransitionScope)
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class, ExperimentalAnimationApi::class)
 @Composable
 private fun SceneScope<Int>.DefinitionsScene2Content() {
-    val state = transition.createChildTransition { it.toState() }
+    val state = transition.createChildTransition { it.toValue() }
 
     Row(
         Modifier.fillMaxSize(),

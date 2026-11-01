@@ -21,8 +21,8 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.dp
 import dev.bnorm.storyboard.StoryboardBuilder
-import dev.bnorm.storyboard.easel.template.SceneEnter
-import dev.bnorm.storyboard.easel.template.SceneExit
+import dev.bnorm.storyboard.layout.template.SceneEnter
+import dev.bnorm.storyboard.layout.template.SceneExit
 import org.jetbrains.compose.resources.painterResource
 
 fun StoryboardBuilder.Scene99_ThankYouScene() {

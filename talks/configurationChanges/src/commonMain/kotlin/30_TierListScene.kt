@@ -66,15 +66,15 @@ import dev.bnorm.storyboard.StoryboardBuilder
 import dev.bnorm.storyboard.easel.assist.SceneCaption
 import dev.bnorm.storyboard.easel.rememberSharedContentState
 import dev.bnorm.storyboard.easel.sharedElement
-import dev.bnorm.storyboard.easel.template.SceneEnter
-import dev.bnorm.storyboard.easel.template.SceneExit
-import dev.bnorm.storyboard.toState
+import dev.bnorm.storyboard.layout.template.SceneEnter
+import dev.bnorm.storyboard.layout.template.SceneExit
+import dev.bnorm.storyboard.toValue
 import theme.jetBrainsMono
 
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class)
 fun StoryboardBuilder.Scene30_TierListScene() {
    scene(
-       states = listOf(
+       frames = listOf(
            TierListSceneState(
                emptySet(),
                overlay = null,
@@ -743,7 +743,7 @@ context(_: AnimatedVisibilityScope, scope: SharedTransitionScope)
 @OptIn(ExperimentalTransitionApi::class, ExperimentalSharedTransitionApi::class, ExperimentalAnimationApi::class)
 @Composable
 private fun SceneScope<TierListSceneState>.TierListSceneContent() {
-    val state = transition.createChildTransition { it.toState() }
+    val state = transition.createChildTransition { it.toValue() }
 
     Box(Modifier.fillMaxSize()) {
         Column(Modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.SpaceEvenly) {

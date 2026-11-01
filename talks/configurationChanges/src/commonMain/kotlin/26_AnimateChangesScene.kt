@@ -18,9 +18,9 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import dev.bnorm.storyboard.StoryboardBuilder
-import dev.bnorm.storyboard.easel.template.SceneEnter
-import dev.bnorm.storyboard.easel.template.SceneExit
-import dev.bnorm.storyboard.toState
+import dev.bnorm.storyboard.layout.template.SceneEnter
+import dev.bnorm.storyboard.layout.template.SceneExit
+import dev.bnorm.storyboard.toValue
 import theme.jetBrainsMono
 
 @OptIn(ExperimentalTransitionApi::class)
@@ -30,7 +30,7 @@ fun StoryboardBuilder.Scene26_AnimateChanges() {
         enterTransition = SceneEnter(Alignment.CenterEnd),
         exitTransition = SceneExit(Alignment.CenterEnd),
     ) {
-        val state = transition.createChildTransition { it.toState() }
+        val state = transition.createChildTransition { it.toValue() }
 
         Column(
             modifier = Modifier.padding(32.dp).fillMaxSize(),
